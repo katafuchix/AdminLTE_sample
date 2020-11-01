@@ -14,9 +14,10 @@ Rails.application.routes.draw do
     get '/' => 'admin_users/sessions#new'
     get '/admin_users/sign_out' => 'admin_users/sessions#destroy'
   end
-  
+
   namespace :admin do
     get '/' => 'index#index'
     get 'index' => 'index#index'
+    resources :admin_users, controller: :manage_roles
   end
 end
