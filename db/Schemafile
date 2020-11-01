@@ -40,6 +40,16 @@ create_table :admin_users , options: nil, force: :cascade do |t|
   t.index [:reset_password_token], unique: true
 end
 
+create_table "admin_user_notifies", force: :cascade do |t|
+  t.integer  "user_id",                                  null: false
+  t.boolean  "user_certification_notify", default: true, null: false
+  t.boolean  "profile_image_notify",      default: true, null: false
+  t.boolean  "user_profile_notify",       default: true, null: false
+  t.boolean  "inquiry_notify",            default: true, null: false
+  t.datetime "created_at",                               null: false
+  t.datetime "updated_at",                               null: false
+  t.index ["user_id"], name: "index_admin_user_notifies_on_user_id", using: :btree
+end
 
 create_table "admin_user_probations", force: :cascade do |t|
   t.integer "user_id"
