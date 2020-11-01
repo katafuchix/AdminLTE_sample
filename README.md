@@ -23,3 +23,10 @@ Things you may want to cover:
 
 * ...
 # AdminLTE_sample
+
+```
+bundle install --path vendor/bundle  
+bin/rails g devise:install 
+bundle exec ridgepole --config ./config/database.yml --file ./db/Schemafile --apply
+bin/rails db:seed_fu      
+```
