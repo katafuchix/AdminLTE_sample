@@ -106,10 +106,11 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
-    devise_token_auth (1.1.3)
+    devise_token_auth (1.1.4)
       bcrypt (~> 3.0)
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 6.1)
+      sprockets (= 3.7.2)
     diffy (3.4.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
@@ -319,7 +320,7 @@ GEM
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
-    sprockets (4.0.2)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.2)
@@ -410,7 +411,7 @@ DEPENDENCIES
   webpacker (~> 4.0)
 
 RUBY VERSION
-   ruby 2.6.6p146
+   ruby 2.7.0p0
 
 BUNDLED WITH
-   1.17.2
+   2.1.2
