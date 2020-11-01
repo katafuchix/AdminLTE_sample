@@ -30,3 +30,8 @@ bin/rails g devise:install
 bundle exec ridgepole --config ./config/database.yml --file ./db/Schemafile --apply
 bin/rails db:seed_fu      
 ```
+
+### export 
+```
+bundle exec ridgepole -c config/database.yml -E development --export -o db/Schemafile
+```
