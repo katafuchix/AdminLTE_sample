@@ -1,0 +1,2 @@
+require 'piet'
+require 'carrierwave'

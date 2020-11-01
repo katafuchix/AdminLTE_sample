@@ -1,0 +1,26 @@
+div.width-full.ps-relative.height-600
+  div.width-two-out-of-ten.ps-absolute.ps-left-zero.auto-overflow
+    = link_to user.user_profile.main_image_url(skip_icon_public_check: true) do
+      = image_tag user.user_profile.main_image_url(skip_icon_public_check: true), class: 'square-nine-out-of-ten-image-contain'
+  div.width-eight-out-of-ten.ps-absolute.break-all-with-auto-overflow.ps-left-two-out-of-ten.height-600
+    - if current_admin_user.higher_admin?
+      dl.dl-horizontal
+        - user.slice(:email, :sign_in_count, :current_sign_in_at, :deleted_at, :mobile_phone, :unconfirmed_mobile_phone, :sms_verification_code).each do |k, v|
+          dt = k
+          dd = v
+        - user.user_profile.actual_values(skip_icon_public_check: true).group_by { |k, v| v.class }.each do |k, v|
+          - v.each do |name, val|
+            dt = name
+            - if val.is_a?(Hash)
+              dd
+                ul.list-unstyled
+                  - val.each do |k, v|
+                    li
+                      = "#{k} : #{v}"
+            - else
+              dd = val
+        - if user.user_app_version_info.present?
+          - user.user_app_version_info.attributes.each do |k, v|
+            - if k.in?(%w(os_info device_info app_version))
+              dt = k
+              dd = v if v.present?

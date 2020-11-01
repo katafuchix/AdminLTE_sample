@@ -1,0 +1,66 @@
+ul.list-inline
+  - user.user_profile.profile_images.each do |image|
+    li.width-400.auto-overflow
+      .admin-user-image-status-box.pull-left
+        span.badge.badge-info = image.sort_order
+        span.text-muted = image.approval_values[:image][:status]
+      .pull-right.padding-right-35
+        - unless image.image_rejected?
+          a[id="image-box-ng-link-#{image.id}" data-toggle="modal" data-target="#image-box-ng-modal-#{image.id}" class="btn btn-lg btn-primary"] NG
+          .modal[id="image-box-ng-modal-#{image.id}"]
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  h5.modal-title プロフ画像の非承認
+                .modal-body
+                  = form_for([:admin, image], html: { method: :delete }) do |f|
+                    .form-group
+                      = f.label :image_rejected_reason
+                      = f.text_field :image_rejected_reason, class: 'form-control', required: true
+                    button.btn.btn-primary[type="submit", method="delete"] NG
+                .modal-footer
+                  button.btn.btn-secondary[data-dismiss="modal" data-target="#image-box-ng-modal-#{image.id}"] Close
+
+        = link_to 'OK', [:admin, image], method: :put, data: {remote: true}, class: 'btn btn-lg btn-success margin-left-3' unless image.image_accepted?
+        - if image.image_was_accepted.present?
+          - if image.image_pending? || image.image_rejected?
+            a[id="image_box_force_ng_link_#{image.id}" data-toggle='modal' data-target="#image_box_force_ng_modal_#{image.id}" class='btn btn-lg btn-primary margin-left-3'] 強制NG
+            .modal[id="image_box_force_ng_modal_#{image.id}"]
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    h5.modal-title 承認済み画像の強制非承認
+                  .modal-body
+                    = form_for([:admin, image], url: force_rejected_admin_profile_image_path(image.id), html: { method: :put }) do |f|
+                      i.form-group
+                        = f.label :image_rejected_reason
+                        = f.text_field :image_rejected_reason, class: 'form-control', required: true
+                      button.btn.btn-primary[type='submit', method='put'] 強制NG
+                  .modal-footer
+                    button.btn.btn-secondary[data-dismiss='modal' data-target="#image_box_force_ng_modal_#{image.id}"] Close
+        - if image.image_was_rejected.present? && (image.image_pending? || image.image_accepted?)
+          = link_to '強制OK', force_accepted_admin_profile_image_path(image.id), method: :put, data: { remote: true }, class: 'btn btn-lg btn-success margin-left-3'
+
+      ul.list-inline.margin-top-55
+        li
+          .text-info マイページ
+          = link_to image.image_url do
+            = image_tag image.approval_values["image_my_page"], class: 'img-thumbnail square-100-image-contain'
+        li
+          .text-info 異性から見たプロフィール
+          = image_tag image.approval_values["image_opp_profile"], class: 'img-thumbnail square-100-image-contain'
+      ul.list-inline
+        - image.approval_values[:image].except(:status, :confirmed_at).each do |k, v|
+          li
+            .text-info = k
+            /= image_tag v.presence || '', class: 'img-thumbnail square-100-image-contain'
+  - user_age_certification = user.user_age_certification
+  - if user_age_certification.document_image_url.present?
+    li.width-400.auto-overflow
+      span.badge.badge-info = user_age_certification.model_name.human
+      span.text-muted = user_age_certification.document_image_status_i18n
+      .pull-right
+        = link_to user_age_certification.document_image_url do
+          = link_to 'OK', [:admin, user_age_certification], method: :put, data: {remote: true}, class: 'btn btn-lg btn-success' unless user_age_certification.document_image_accepted?
+      ul.list-inline
+        li = image_tag user_age_certification.document_image_url, class: 'square-full-image-contain'

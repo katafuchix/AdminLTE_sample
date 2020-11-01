@@ -1,0 +1,30 @@
+nav.navbar.navbar-default.navbar-fixed-top.am-top-header
+  .container-fluid
+    .navbar-header
+      .page-title
+        span
+          | 管理画面
+      a.am-toggle-left-sidebar.navbar-toggle.collapsed[href="#"]
+        span.icon-bar
+          span
+          span
+          span
+      /= image_tag 'logo-white', class: 'navbar-brand object-fit-contain'
+
+    div.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right.am-user-nav
+        li
+          = link_to '/sidekiq', target: "_blank" do
+            span.icon.s7-box2
+              | &nbsp;
+              = 'キュー'
+        li
+          = link_to admin_my_dashboards_path do
+            span.icon.s7-user
+              | &nbsp;
+              = 'マイページ'
+        li
+          = link_to destroy_admin_user_session_path, method: :delete do
+            span.icon.s7-power
+              | &nbsp;
+              = "Log out #{current_admin_user.name}"

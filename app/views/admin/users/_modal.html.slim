@@ -1,0 +1,5 @@
+.modal[tabindex="-1", role="dialog" id="image-box-modal-#{user.id}"]
+  .modal-dialog.width-eight-out-of-ten
+    .modal-content.max-width-full
+      .modal-body
+        == render partial: 'user', locals: { user: user }

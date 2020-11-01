@@ -1,0 +1,10 @@
+- flash.each do |key, msg|
+  - alert_class = {success: :success, notice: :info, alert: :warning, danger: :danger}[key.to_sym]
+  - alert_icon = {success: 's7-check', notice: 's7-info', alert: 's7-attention', danger: 's7-close-circle'}[key.to_sym]
+  div class=("alert alert-icon alert-dismissible alert-#{alert_class}")
+    .icon
+      span[class=alert_icon]
+    .message
+      strong = msg
+      button.close data-dismiss="alert"
+        .s7-close aria-hidden="true"

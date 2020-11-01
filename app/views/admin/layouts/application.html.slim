@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title
+      | 管理画面
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    = csrf_meta_tags
+    == render partial: 'admin/layouts/assets'
+  body
+    .am-wrapper
+      == render partial: 'admin/layouts/header'
+      == render partial: 'admin/layouts/sidebar'
+      == render partial: 'admin/layouts/body'
+  javascript:
+    $(document).ready(function(){ App.init(); });

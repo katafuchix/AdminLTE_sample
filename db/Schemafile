@@ -1,0 +1,684 @@
+
+create_table :admin_users , options: nil, force: :cascade do |t|
+  ## Database authenticatable
+  t.string :email,              null: false, default: ""
+  t.string :encrypted_password, null: false, default: ""
+
+  # add
+  t.string :name,              null: false, default: ""
+  t.integer :role,                default: 0
+  # add end
+
+  ## Recoverable
+  t.string   :reset_password_token
+  t.datetime :reset_password_sent_at
+
+  ## Rememberable
+  t.datetime :remember_created_at
+
+  ## Trackable
+  # t.integer  :sign_in_count, default: 0, null: false
+  # t.datetime :current_sign_in_at
+  # t.datetime :last_sign_in_at
+  # t.string   :current_sign_in_ip
+  # t.string   :last_sign_in_ip
+
+  ## Confirmable
+  # t.string   :confirmation_token
+  # t.datetime :confirmed_at
+  # t.datetime :confirmation_sent_at
+  # t.string   :unconfirmed_email # Only if using reconfirmable
+
+  ## Lockable
+  # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+  # t.string   :unlock_token # Only if unlock strategy is :email or :both
+  # t.datetime :locked_at
+
+
+  t.timestamps null: false
+  t.index [:email],                unique: true
+  t.index [:reset_password_token], unique: true
+end
+
+
+create_table "admin_user_probations", force: :cascade do |t|
+  t.integer "user_id"
+  t.text "comment", limit: 65535
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["user_id"], name: "index_admin_user_probations_on_user_id"
+end
+
+
+create_table "users", options: nil, force: :cascade do |t|
+  ## Required
+  t.string :provider, null: false, :default => "email"
+  t.string :uid, null: false, :default => ""
+
+  ## Database authenticatable
+  t.string :encrypted_password, null: false, :default => ""
+
+  ## Recoverable
+  t.string   :reset_password_token
+  t.datetime :reset_password_sent_at
+  t.boolean  :allow_password_change, :default => false
+
+  ## Rememberable
+  t.datetime :remember_created_at
+
+  ## Confirmable
+  t.string   :confirmation_token
+  t.datetime :confirmed_at
+  t.datetime :confirmation_sent_at
+  t.string   :unconfirmed_email # Only if using reconfirmable
+
+  ## Lockable
+  # t.integer  :failed_attempts, :default => 0, null: false # Only if lock strategy is :failed_attempts
+  # t.string   :unlock_token # Only if unlock strategy is :email or :both
+  # t.datetime :locked_at
+
+  ## User Info
+  t.string :name
+  t.string :nickname
+  t.string :image
+  t.string :email
+
+  ## Tokens
+  t.text :tokens
+
+  t.timestamps
+
+  ### add
+  t.string :authentication_token
+  t.integer  :status,     :default => 0,     null: false
+
+  t.integer  "incomming_visitors_count",                         default: 0,     null: false
+  t.integer  "outcomming_visitors_count",                        default: 0,     null: false
+  t.integer  "remain_relation_count",                            default: 0,     null: false
+  t.integer  "outcomming_pickups_count",                         default: 0,     null: false
+  t.integer  "incomming_pickups_count",                          default: 0,     null: false
+
+  t.integer  "friends_count",                          default: 0,     null: false
+  t.integer  "unread_friends_count",                   default: 0,     null: false
+  t.integer  "unread_messages_count",                  default: 0,     null: false
+  t.string   "device_token"
+  t.integer  "profile_images_count",                   default: 0
+  t.integer  "user_favorites_count",                   default: 0
+  t.integer  "incomming_blocks_count",                 default: 0,     null: false
+  t.integer  "outcomming_blocks_count",                default: 0,     null: false
+  t.integer  "outcomming_favorites_count",             default: 0,     null: false
+  t.integer  "incomming_favorites_count",              default: 0,     null: false
+  t.integer  "incomming_relations_count",              default: 0,     null: false
+  t.integer  "outcomming_relations_count",             default: 0,     null: false
+  t.integer  "incomming_matches_count",                default: 0,     null: false
+  t.integer  "outcomming_matches_count",               default: 0,     null: false
+  t.integer  "incomming_displays_count",               default: 0,     null: false
+  t.integer  "outcomming_displays_count",              default: 0,     null: false
+  t.integer  "incomming_violations_count",             default: 0,     null: false
+  t.integer  "outcomming_violations_count",            default: 0,     null: false
+  t.boolean  "notification_sent",                                default: false, null: false
+  t.boolean  "is_private",                                       default: false, null: false
+  t.boolean  "visitor_log",                                      default: true
+  t.string   "device_token_android"
+  t.integer  "sign_in_count",                          default: 0,     null: false
+  t.datetime "current_sign_in_at"
+  t.datetime "last_sign_in_at"
+  t.string   "current_sign_in_ip"
+  t.string   "last_sign_in_ip"
+  t.string   "mobile_phone",                limit: 64
+  t.string   "unconfirmed_mobile_phone",    limit: 64
+  t.string   "sms_verification_code"
+  t.boolean  "sms_confirmed",                          default: false, null: false
+  t.datetime :deleted_at
+
+  t.index [:email],                unique: true
+  t.index [:uid, :provider],     unique: true
+  t.index [:reset_password_token], unique: true
+  t.index [:confirmation_token],   unique: true
+  # add_index :users, :unlock_token,       unique: true
+
+  t.index [:authentication_token], unique: true, using: :btree
+  t.index [:statsu], using: :btree
+  t.index [:deleted_at], using: :btree
+end
+
+
+create_table "user_profiles", force: :cascade do |t|
+  t.integer  "user_id"
+  t.string   "name"
+  t.integer  "sex"
+  t.string   "comment",                        limit: 2000
+  t.datetime "age_confirmed_at"
+  t.datetime "birthday"
+  t.integer  "prof_address_id"
+  t.integer  "height"
+  t.integer  "prof_job_id"
+  t.integer  "blood"
+  t.datetime "created_at",                                               null: false
+  t.datetime "updated_at",                                               null: false
+  t.string   "icon"
+  t.text     "dream",                          limit: 65535
+  t.text     "school_name",                    limit: 65535
+  t.text     "hobby",                          limit: 65535
+  t.integer  "prof_annual_income_id",                        default: 1
+  t.integer  "prof_drinking_habit_id",                       default: 1
+  t.integer  "prof_expect_support_money_id",                 default: 1
+  t.integer  "prof_educational_background_id",               default: 1
+  t.integer  "prof_figure_id",                               default: 1
+  t.integer  "prof_first_date_cost_id",                      default: 1
+  t.integer  "prof_have_child_id",                           default: 1
+  t.integer  "prof_holiday_id",                              default: 1
+  t.integer  "prof_marriage_id",                             default: 1
+  t.integer  "prof_personality_id",                          default: 1
+  t.integer  "prof_request_until_meet_id",                   default: 1
+  t.integer  "prof_smoking_habit_id",                        default: 1
+  t.integer  "prof_birth_place_id",                          default: 1
+  t.text     "job_name",                       limit: 65535
+  t.integer  "comment_status",                               default: 0, null: false
+  t.datetime "comment_confirmed_at"
+  t.string   "comment_was_accepted",           limit: 2000
+  t.string   "comment_was_rejected",           limit: 2000
+  t.text     "comment_rejected_reason",        limit: 65535
+  t.integer  "dream_status",                                 default: 0, null: false
+  t.datetime "dream_confirmed_at"
+  t.string   "dream_was_accepted"
+  t.string   "dream_was_rejected"
+  t.text     "dream_rejected_reason",          limit: 65535
+  t.integer  "school_name_status",                           default: 0, null: false
+  t.datetime "school_name_confirmed_at"
+  t.string   "school_name_was_accepted"
+  t.string   "school_name_was_rejected"
+  t.text     "school_name_rejected_reason",    limit: 65535
+  t.integer  "hobby_status",                                 default: 0, null: false
+  t.datetime "hobby_confirmed_at"
+  t.string   "hobby_was_accepted"
+  t.string   "hobby_was_rejected"
+  t.text     "hobby_rejected_reason",          limit: 65535
+  t.integer  "job_name_status",                              default: 0, null: false
+  t.datetime "job_name_confirmed_at"
+  t.string   "job_name_was_accepted"
+  t.string   "job_name_was_rejected"
+  t.text     "job_name_rejected_reason",       limit: 65535
+  t.string   "background_image"
+  t.string   "tweet"
+  t.integer  "tweet_status",                                 default: 0, null: false
+  t.datetime "tweet_confirmed_at"
+  t.string   "tweet_was_accepted"
+  t.string   "tweet_was_rejected"
+  t.text     "tweet_rejected_reason",          limit: 65535
+  t.integer  "user_template_id"
+  t.string   "comment_before",                 limit: 2000
+  t.string   "dream_before"
+  t.string   "school_name_before"
+  t.string   "hobby_before"
+  t.string   "job_name_before"
+  t.string   "tweet_before"
+  t.datetime "birthday_updated_at"
+  t.datetime "income_confirmed_at"
+  t.integer  "comment_admin_user_id"
+  t.integer  "dream_admin_user_id"
+  t.integer  "school_name_admin_user_id"
+  t.integer  "hobby_admin_user_id"
+  t.integer  "job_name_admin_user_id"
+  t.integer  "tweet_admin_user_id"
+  t.string   "good_place"
+  t.integer  "good_place_status",                            default: 3
+  t.text     "good_place_rejected_reason",     limit: 65535
+  t.string   "good_place_was_accepted"
+  t.string   "good_place_was_rejected"
+  t.datetime "good_place_confirmed_at"
+  t.string   "good_place_before"
+  t.integer  "good_place_admin_user_id"
+  t.string   "date_place"
+  t.integer  "date_place_status",                            default: 3
+  t.text     "date_place_rejected_reason",     limit: 65535
+  t.string   "date_place_was_accepted"
+  t.string   "date_place_was_rejected"
+  t.datetime "date_place_confirmed_at"
+  t.string   "date_place_before"
+  t.integer  "date_place_admin_user_id"
+  t.boolean  "meet_at_today_dinner",                         default: false, null: false
+  t.boolean  "meet_at_today_lunch",                          default: false, null: false
+  t.boolean  "meet_at_today_tea",                            default: false, null: false
+  t.index ["blood"], name: "index_user_profiles_on_blood", using: :btree
+  t.index ["height"], name: "index_user_profiles_on_height", using: :btree
+  t.index ["prof_address_id"], name: "index_user_profiles_on_prof_address_id", using: :btree
+  t.index ["prof_annual_income_id"], name: "index_user_profiles_on_prof_annual_income_id", using: :btree
+  t.index ["prof_birth_place_id"], name: "index_user_profiles_on_prof_birth_place_id", using: :btree
+  t.index ["prof_drinking_habit_id"], name: "index_user_profiles_on_prof_drinking_habit_id", using: :btree
+  t.index ["prof_educational_background_id"], name: "index_user_profiles_on_prof_educational_background_id", using: :btree
+  t.index ["prof_expect_support_money_id"], name: "index_user_profiles_on_prof_expect_support_money_id", using: :btree
+  t.index ["prof_figure_id"], name: "index_user_profiles_on_prof_figure_id", using: :btree
+  t.index ["prof_first_date_cost_id"], name: "index_user_profiles_on_prof_first_date_cost_id", using: :btree
+  t.index ["prof_have_child_id"], name: "index_user_profiles_on_prof_have_child_id", using: :btree
+  t.index ["prof_holiday_id"], name: "index_user_profiles_on_prof_holiday_id", using: :btree
+  t.index ["prof_job_id"], name: "index_user_profiles_on_prof_job_id", using: :btree
+  t.index ["prof_marriage_id"], name: "index_user_profiles_on_prof_marriage_id", using: :btree
+  t.index ["prof_personality_id"], name: "index_user_profiles_on_prof_personality_id", using: :btree
+  t.index ["prof_request_until_meet_id"], name: "index_user_profiles_on_prof_request_until_meet_id", using: :btree
+  t.index ["prof_smoking_habit_id"], name: "index_user_profiles_on_prof_smoking_habit_id", using: :btree
+  t.index ["sex"], name: "index_user_profiles_on_sex", using: :btree
+  t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
+end
+
+
+create_table "user_matches", force: :cascade do |t|
+  t.integer  "user_id"
+  t.integer  "target_user_id", null: false
+  t.string   "room_id"
+  t.datetime "created_at",     null: false
+  t.datetime "updated_at",     null: false
+  t.index ["room_id"], name: "index_user_matches_on_room_id", unique: true, using: :btree
+  t.index ["target_user_id"], name: "index_user_matches_on_target_user_id", using: :btree
+  t.index ["user_id", "target_user_id"], name: "index_user_matches_on_user_id_and_target_user_id", unique: true, using: :btree
+  t.index ["user_id"], name: "index_user_matches_on_user_id", using: :btree
+end
+
+create_table "user_match_messages", force: :cascade　 do |t|
+  t.integer  "user_match_id"
+  t.string   "message"
+  t.datetime "created_at",                           null: false
+  t.datetime "updated_at",                           null: false
+  t.string   "image"
+  t.integer  "sender_user_id",                       null: false
+  t.integer  "receiver_user_id",                     null: false
+  t.integer  "message_status",       default: 0
+  t.datetime "message_confirmed_at"
+  t.string   "message_was_accepted"
+  t.string   "message_was_rejected"
+  t.boolean  "delivered",            default: false, null: false
+  t.index ["user_match_id"], name: "index_user_match_messages_on_user_match_id", using: :btree
+end
+
+
+create_table "user_age_certifications", force: :cascade do |t|
+  t.integer "user_id"
+  t.string "document_image"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.integer "document_image_status", default: 0, null: false
+  t.datetime "document_image_confirmed_at"
+  t.string "document_image_was_accepted"
+  t.string "document_image_was_rejected"
+  t.text "document_image_rejected_reason", limit: 65535
+  t.string "document_image_before"
+  t.integer "document_image_admin_user_id"
+  t.index ["user_id"], name: "index_user_age_certifications_on_user_id"
+end
+
+create_table "user_android_purchase_histories", force: :cascade do |t|
+  t.integer "user_id"
+  t.string "product_id_str", null: false
+  t.string "order_id", null: false
+  t.string "purchase_token", null: false
+  t.text "purchase_data", limit: 65535, null: false
+  t.text "signature", limit: 65535, null: false
+  t.integer "result_type"
+  t.string "result_message"
+  t.boolean "skip", default: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["order_id"], name: "index_user_android_purchase_histories_on_order_id"
+  t.index ["product_id_str"], name: "index_user_android_purchase_histories_on_product_id_str"
+  t.index ["purchase_token"], name: "index_user_android_purchase_histories_on_purchase_token"
+  t.index ["user_id"], name: "index_user_android_purchase_histories_on_user_id"
+end
+
+create_table "user_app_version_infos", force: :cascade do |t|
+  t.integer "user_id", null: false
+  t.string "os_info"
+  t.string "device_info"
+  t.string "app_version"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["user_id"], name: "index_user_app_version_infos_on_user_id", unique: true
+end
+
+create_table "user_billings", force: :cascade do |t|
+  t.integer "user_id"
+  t.text "address", limit: 65535
+  t.string "name"
+  t.string "tel"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["user_id"], name: "index_user_billings_on_user_id"
+end
+
+create_table "user_blocked_phones", force: :cascade do |t|
+  t.integer "user_id"
+  t.string "phone_number"
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+  t.index ["user_id"], name: "index_user_blocked_phones_on_user_id"
+end
+
+create_table "user_blocks", force: :cascade do |t|
+  t.integer "user_id"
+  t.integer "target_user_id", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.boolean "is_forced", default: false, null: false
+  t.index ["target_user_id"], name: "index_user_blocks_on_target_user_id"
+  t.index ["user_id", "target_user_id"], name: "index_user_blocks_on_user_id_and_target_user_id", unique: true
+  t.index ["user_id"], name: "index_user_blocks_on_user_id"
+end
+
+create_table "user_displays", force: :cascade do |t|
+  t.integer "user_id", null: false
+  t.integer "target_user_id", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["target_user_id"], name: "index_user_displays_on_target_user_id"
+  t.index ["user_id", "target_user_id"], name: "index_user_displays_on_user_id_on_target_user_id", unique: true
+  t.index ["user_id"], name: "index_user_displays_on_user_id"
+end
+
+create_table "user_favorites", force: :cascade do |t|
+  t.integer "user_id"
+  t.integer "target_user_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["target_user_id"], name: "index_user_favorites_on_target_user_id"
+  t.index ["user_id", "target_user_id"], name: "index_user_favorites_on_user_id_and_target_user_id", unique: true
+  t.index ["user_id"], name: "index_user_favorites_on_user_id"
+end
+
+create_table "user_income_certifications", force: :cascade do |t|
+  t.integer "user_id"
+  t.string "document_image", null: false
+  t.integer "document_image_status", default: 0, null: false
+  t.datetime "document_image_confirmed_at"
+  t.string "document_image_was_accepted"
+  t.string "document_image_was_rejected"
+  t.text "document_image_rejected_reason", limit: 65535
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.string "document_image_before"
+  t.integer "document_image_admin_user_id"
+  t.index ["user_id"], name: "index_user_income_certifications_on_user_id"
+end
+
+create_table "user_invite_codes", force: :cascade do |t|
+  t.integer "user_id"
+  t.string "invite_code"
+  t.boolean "used", default: false
+  t.integer "invited_user_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["invite_code"], name: "index_user_invite_codes_on_invite_code", unique: true
+  t.index ["invited_user_id"], name: "index_user_invite_codes_on_invited_user_id", unique: true
+  t.index ["user_id"], name: "index_user_invite_codes_on_user_id"
+end
+
+create_table "user_ios_purchase_histories", force: :cascade do |t|
+  t.integer "user_id"
+  t.string "product_id_str"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.text "base64_receipt", limit: 16777215, null: false
+  t.integer "result_type"
+  t.string "result_message"
+  t.bigint "transaction_id"
+  t.bigint "original_transaction_id"
+  t.index ["product_id_str", "transaction_id"], name: "transaction_unique_index", unique: true
+  t.index ["product_id_str"], name: "index_user_ios_purchase_histories_on_product_id_str"
+  t.index ["user_id"], name: "index_user_ios_purchase_histories_on_user_id"
+end
+
+create_table "user_login_bonuses", force: :cascade do |t|
+  t.integer "user_id"
+  t.datetime "daily_login_date"
+  t.datetime "daily_serial_login_beginning_date"
+  t.integer "daily_serial_login_count"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["user_id"], name: "index_user_login_bonuses_on_user_id"
+end
+
+
+create_table "user_memos", force: :cascade do |t|
+  t.integer "user_id", null: false
+  t.integer "target_user_id", null: false
+  t.string "body", limit: 1000
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["target_user_id"], name: "index_user_memos_on_target_user_id"
+  t.index ["user_id", "target_user_id"], name: "index_user_memos_on_user_id_and_target_user_id", unique: true
+  t.index ["user_id"], name: "index_user_memos_on_user_id"
+end
+
+create_table "user_notification_reads", force: :cascade do |t|
+  t.integer "user_id"
+  t.string "notificatable_type"
+  t.integer "notificatable_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["notificatable_type", "notificatable_id"], name: "user_notification_reads_index"
+  t.index ["user_id"], name: "index_user_notification_reads_on_user_id"
+end
+
+create_table "user_notifications", force: :cascade do |t|
+  t.integer "user_id"
+  t.integer "notice_type"
+  t.string "title"
+  t.text "body", limit: 65535
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["notice_type"], name: "index_user_notifications_on_notice_type"
+  t.index ["user_id"], name: "index_user_notifications_on_user_id"
+end
+
+create_table "user_notifies", force: :cascade do |t|
+  t.integer "user_id", null: false
+  t.boolean "match_push_notify", default: true, null: false
+  t.boolean "match_mail_notify", default: false, null: false
+  t.boolean "relation_push_notify", default: true, null: false
+  t.boolean "relation_mail_notify", default: false, null: false
+  t.boolean "notification_push_notify", default: true, null: false
+  t.boolean "notification_mail_notify", default: false, null: false
+  t.boolean "match_message_push_notify", default: true, null: false
+  t.boolean "match_message_mail_notify", default: false, null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.boolean "visitor_push_notify", default: true, null: false
+  t.boolean "visitor_mail_notify", default: false, null: false
+  t.index ["user_id"], name: "index_user_notifies_on_user_id"
+end
+
+create_table "user_payments", force: :cascade do |t|
+  t.integer "user_id"
+  t.datetime "start_at"
+  t.datetime "end_at"
+  t.integer "payment_type"
+  t.boolean "enabled", default: true
+  t.datetime "next_term_start_at"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["enabled"], name: "index_user_payments_on_enabled"
+  t.index ["next_term_start_at"], name: "index_user_payments_on_next_term_start_at"
+  t.index ["payment_type"], name: "index_user_payments_on_payment_type"
+  t.index ["user_id"], name: "index_user_payments_on_user_id"
+end
+
+create_table "user_pickups", force: :cascade do |t|
+  t.integer "user_id"
+  t.integer "target_user_id", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["target_user_id"], name: "index_user_pickups_on_target_user_id"
+  t.index ["user_id", "target_user_id"], name: "index_user_pickups_on_user_id_and_target_user_id", unique: true
+  t.index ["user_id"], name: "index_user_pickups_on_user_id"
+end
+
+create_table "user_point_payments", force: :cascade do |t|
+  t.integer "user_id"
+  t.datetime "end_at"
+  t.integer "process_type"
+  t.integer "remain_point"
+  t.integer "point"
+  t.boolean "enabled", default: true
+  t.datetime "process_date"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["enabled"], name: "index_user_point_payments_on_enabled"
+  t.index ["end_at"], name: "index_user_point_payments_on_end_at"
+  t.index ["process_date"], name: "index_user_point_payments_on_process_date"
+  t.index ["process_type"], name: "index_user_point_payments_on_process_type"
+  t.index ["user_id"], name: "index_user_point_payments_on_user_id"
+end
+
+create_table "user_ranks", force: :cascade do |t|
+  t.integer "user_id"
+  t.integer "rank", default: 0
+  t.integer "face_score", default: 0
+  t.integer "profile_comment_score", default: 0
+  t.integer "profile_image_score", default: 0
+  t.integer "charge_score", default: 0
+  t.integer "message_score", default: 0
+  t.integer "violation_score", default: 0
+  t.integer "outcomming_relation_score", default: 0
+  t.integer "incomming_relation_score", default: 0
+  t.integer "last_login_score", default: 0
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["user_id"], name: "index_user_ranks_on_user_id"
+end
+
+create_table "user_relations", force: :cascade do |t|
+  t.integer "user_id"
+  t.integer "target_user_id", null: false
+  t.text "message", limit: 65535
+  t.boolean "read", default: false
+  t.integer "user_match_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.boolean "skipped", default: false
+  t.boolean "active", default: true
+  t.integer "message_status", default: 3, null: false
+  t.datetime "message_confirmed_at"
+  t.text "message_was_accepted"
+  t.text "message_was_rejected"
+  t.text "message_rejected_reason"
+  t.text "message_before"
+  t.integer "message_admin_user_id"
+  t.index ["target_user_id"], name: "index_user_relations_on_target_user_id"
+  t.index ["user_id", "active"], name: "index_user_relations_on_user_id_and_active"
+  t.index ["user_id", "target_user_id"], name: "index_user_relations_on_user_id_and_target_user_id", unique: true
+  t.index ["user_id"], name: "index_user_relations_on_user_id"
+  t.index ["user_match_id"], name: "index_user_relations_on_user_match_id"
+end
+
+create_table "user_templates", force: :cascade do |t|
+  t.string "name"
+  t.string "background_image"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "user_violations", force: :cascade do |t|
+  t.integer "user_id", null: false
+  t.integer "target_user_id", null: false
+  t.integer "violation_category_id", null: false
+  t.text "reason", limit: 65535
+  t.boolean "boolean", default: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.integer "reason_status", default: 0, null: false
+  t.datetime "reason_confirmed_at"
+  t.text "reason_was_accepted", limit: 65535
+  t.text "reason_was_rejected", limit: 65535
+  t.text "reason_before", limit: 65535
+  t.text "reason_rejected_reason", limit: 65535
+  t.index ["target_user_id"], name: "index_user_violations_on_target_user_id"
+  t.index ["user_id", "target_user_id"], name: "index_user_violations_on_user_id_on_target_user_id", unique: true
+  t.index ["user_id"], name: "index_user_violations_on_user_id"
+end
+
+create_table "user_visitors", force: :cascade do |t|
+  t.integer "user_id", null: false
+  t.integer "target_user_id", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.boolean "read", default: true, null: false
+  t.index ["target_user_id"], name: "index_user_visitors_on_target_user_id"
+  t.index ["user_id"], name: "index_user_visitors_on_user_id"
+end
+
+
+create_table "masters", force: :cascade do |t|
+  t.string "name"
+  t.boolean "enabled"
+  t.integer "sort_order"
+  t.string "type"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "profile_images", force: :cascade do |t|
+  t.integer "user_profile_id"
+  t.text "image", limit: 65535
+  t.integer "sort_order"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.integer "image_status", default: 0, null: false
+  t.datetime "image_confirmed_at"
+  t.text "image_was_accepted", limit: 65535
+  t.text "image_was_rejected", limit: 65535
+  t.text "image_rejected_reason", limit: 65535
+  t.text "image_before", limit: 65535
+  t.integer "image_admin_user_id"
+  t.integer "image_role", default: 0, null: false
+  t.index ["user_profile_id", "sort_order"], name: "index_profile_images_on_user_profile_id_and_sort_order"
+  t.index ["user_profile_id"], name: "index_profile_images_on_user_profile_id"
+end
+
+create_table "purchase_payingmember_campaigns", force: :cascade do |t|
+  t.integer "purchase_payingmember_id"
+  t.integer "campaign_type"
+  t.integer "sex"
+  t.integer "value"
+  t.datetime "start_at"
+  t.datetime "end_at"
+  t.boolean "enabled", default: true
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.string "name"
+  t.integer "sort_order"
+  t.integer "contact_type", default: 0
+  t.index ["purchase_payingmember_id"], name: "purchase_payingmember_campaigns_idx"
+end
+
+create_table "purchase_payingmembers", force: :cascade do |t|
+  t.string "product_id_str"
+  t.string "name"
+  t.integer "price"
+  t.integer "term"
+  t.boolean "is_premium"
+  t.integer "sort_order"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["product_id_str"], name: "index_purchase_payingmembers_on_product_id_str"
+end
+
+create_table "purchase_points", force: :cascade do |t|
+  t.string "product_id_str"
+  t.string "name"
+  t.integer "price"
+  t.integer "point"
+  t.integer "sort_order"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["product_id_str"], name: "index_purchase_points_on_product_id_str"
+end
+
+
+create_table :articles, force: :cascade do |t|
+  t.string :body
+  #t.references :user, null: false, foreign_key: true
+  t.integer  :user_id
+  t.datetime :created_at,                                               null: false
+  t.datetime :updated_at,                                               null: false
+  t.datetime :deleted_at
+  t.index [:user_id], using: :btree
+  t.index [:deleted_at], using: :btree
+end

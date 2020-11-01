@@ -1,0 +1,32 @@
+== render partial: 'admin/layouts/assets'
+.main-content
+  .login-container
+    .panel.panel-default
+      .panel-heading
+        / = image_tag 'logo-white', size: '300x100', alt: 'Paters', class: 'logo-img'
+        span
+          | admin portal
+      .panel-body
+        = form_for(resource, as: resource_name, url: session_path(resource_name), class: 'form-horizontal') do |f|
+          .login-form
+            .form-group
+              .input-group
+                span.input-group-addon
+                  i.icon.s7-user
+                = f.email_field :email, autofocus: true, class: 'form-control'
+            .form-group
+              .input-group
+                span.input-group-addon
+                  i.icon.s7-lock
+                = f.password_field :password, autocomplete: "off", class: 'form-control'
+            .form-group.login-submit
+              = f.submit "Log in", class: 'btn btn-primary btn-lg'
+            .form-group.footer.row
+              - if devise_mapping.rememberable?
+                .col-xs-12.remember
+                  .am-checkbox
+                    = f.check_box :remember_me
+                    = f.label :remember_me
+sass:
+  body
+    background-color: #383737

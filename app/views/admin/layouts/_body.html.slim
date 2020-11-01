@@ -1,0 +1,14 @@
+.am-content
+  == render 'admin/layouts/alert'
+  .page-head
+    .pull-right = paginate @paginate, params: { target_column: @target_column } || {} if @paginate.present?
+    h2
+      = yield(:title)
+    ol.breadcrumb
+      = yield(:unorder_lits_links)
+
+  .main-content style="width: 100%; -webkit-overflow-scrolling: auto;"
+    h3.text-center
+      = yield(:subtitle)
+    = yield
+    .pull-right = paginate @paginate, params: { target_column: @target_column } || {} if @paginate.present?

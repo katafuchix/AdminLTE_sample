@@ -1,0 +1,37 @@
+<script type="text/javascript">
+  $(function () {
+    window.swaggerUi = new SwaggerUi({
+      url: '<%= discovery_url %>',
+      <% if defined?(api_key) %>
+        apiKey: '<%= api_key %>',
+      <% end %>
+      dom_id:"swagger-ui-container",
+      supportHeaderParams: false,
+      supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+      onComplete: function(swaggerApi, swaggerUi){
+        if(console) {
+              console.log("Loaded SwaggerUI")
+              console.log(swaggerApi);
+              console.log(swaggerUi);
+          }
+        $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+      },
+      onFailure: function(data) {
+        if(console) {
+              console.log("Unable to Load SwaggerUI");
+              console.log(data);
+          }
+      },
+      docExpansion: "none"
+    });
+
+    window.swaggerUi.load();
+  });
+
+</script>
+
+<div id="message-bar" class="swagger-ui-wrap">
+    &nbsp;
+</div>
+
+<div id="swagger-ui-container" class="swagger-ui-wrap"></div>

@@ -1,0 +1,115 @@
+= search_form_for [:admin, @q], { class: 'form-horizontal usearch' } do |f|
+  .col-lg-3.col-sm-6.col-xs-6
+    label.col-sm-3.control-label
+      | User ID
+    .col-sm-9
+      = search_field_tag :user_id, params[:user_id], placeholder: 'user_id 空白区切可能', class: 'form-control'
+  .col-lg-3.col-sm-6.col-xs-6
+    label.col-sm-3.control-label
+      | 名前
+    .col-sm-9
+      = search_field_tag :name, params[:name], placeholder: '名前', class: 'form-control'
+  .col-lg-3.col-sm-6.col-xs-6
+    label.col-sm-3.control-label
+      | メールアドレス
+    .col-sm-9
+      = search_field_tag :email, params[:email], placeholder: 'メールアドレス', class: 'form-control'
+  .col-lg-3.col-sm-6.col-xs-6
+    label.col-sm-3.control-label
+      | 電話番号
+    .col-sm-9
+      = search_field_tag :mobile_phone, params[:mobile_phone], placeholder: '電話番号', class: 'form-control'
+  .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+    label.col-sm-3.control-label
+      | 性別
+    .col-sm-9
+      = select_tag 'sex', options_for_select(UserProfile.sexes_i18n.invert, params[:sex]), { include_blank: '性別', class: 'form-control' }
+  - @conditions.sort { |a,b| a[:input_type] <=> b[:input_type] }.each do |c|
+      - key = c[:key]
+      - val = params[key]
+      .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+        label.col-sm-3.control-label
+          = c[:name]
+        .col-sm-9
+          - if c[:input_type] != 2
+            - if key.end_with?('_in')
+              = select_tag "#{key}[]", options_for_select(c[:contents].map{|m| [m[:name], m[:id]]}, val), { class: 'select2', multiple: ''}
+            - else
+              = select_tag key, options_for_select(c[:contents].map{|m| [m[:name], m[:id]]}, val), { include_blank: c[:name], class: 'form-control' }
+          - else
+            - contents = c[:contents].map { |m| m[:id] }
+            = text_field_tag key, val, pattern: '^[0-9]+\.\.[0-9]+$', placeholder: "#{contents.first}..#{contents.last}", class: 'form-control'
+
+  .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+    label.col-sm-3.control-label
+      | 会員購入
+    .col-sm-9
+      = select_tag 'member_type', options_for_select([['プレミアム会員', '3'], ['有料会員', '2'], ['無料会員', '1']], params[:member_type]), { include_blank: '会員購入', class: 'form-control' }
+  .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+    label.col-sm-3.control-label
+      | 年齢確認
+    .col-sm-9
+      = select_tag 'age_confirm', options_for_select([['承認済', '2'], ['未確認', '1']], params[:age_confirm]), { include_blank: '年齢確認', class: 'form-control' }
+  .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+    label.col-sm-3.control-label
+      | 自己紹介文
+    .col-sm-9
+      = search_field_tag :comment, params[:comment], placeholder: '自己紹介文', class: 'form-control'
+  .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+    label.col-sm-3.control-label
+      | つぶやき
+    .col-sm-9
+      = search_field_tag :tweet, params[:tweet], placeholder: 'つぶやき', class: 'form-control'
+  .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+    label.col-sm-3.control-label
+      | 将来の夢
+    .col-sm-9
+      = search_field_tag :dream, params[:dream], placeholder: '将来の夢', class: 'form-control'
+  .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+    label.col-sm-3.control-label
+      | 学校名
+    .col-sm-9
+      = search_field_tag :school_name, params[:school_name], placeholder: '学校名', class: 'form-control'
+  .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+    label.col-sm-3.control-label
+      | 職業名
+    .col-sm-9
+      = search_field_tag :job_name, params[:job_name], placeholder: '職業名', class: 'form-control'
+  .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
+    label.col-sm-3.control-label
+      | 趣味
+    .col-sm-9
+      = search_field_tag :hobby, params[:hobby], placeholder: '趣味', class: 'form-control'
+
+  .clr
+    = submit_tag '検索', class: 'btn btn-space'
+    = link_to 'リセット', admin_users_path, class: 'btn btn-space btn-default'
+    - if current_admin_user.special?
+      = button_tag '検索結果CSV出力', type: 'button', class: 'btn btn-space btn-default output_csv'
+      = button_tag 'FB入稿用CSV出力', type: 'button', class: 'btn btn-space btn-default output_fb_csv'
+css:
+  .usearch { margin-right:-15px; }
+  .usearch .clr { clear:both; padding-top:15px; text-align:center; }
+  .usearch .col-sm-6 { padding:5px 0px; }
+  .usearch .col-lg-3:nth-child(4n + 2) { clear:both; }
+  @media (max-width: 768px) { .usearch .col-sm-6:nth-child(2n + 2) { clear:both; } }
+  .usearch .col-sm-6 label { font-size:11px; padding:15px 0px 0px 0px; }
+  .usearch .select2-selection--multiple { min-height:44px !important; }
+  .usearch .select2-selection__rendered { display:block !important; padding:5px 5px 5px 10px !important; }
+  .usearch .select2-selection__rendered li { margin:2px 5px 2px 0px !important; }
+javascript:
+  $(".select2").select2({ width:"100%" });
+  $('button.output_csv').click(function () {
+      if (#{@users.total_count} >= 1000) {
+         if(!confirm("出力データが #{@users.total_count} 件あるため、時間がかかる可能性があります。")) {
+             return false;
+         }
+      }
+  });
+  $('button.output_fb_csv').click(function () {
+      if (#{@users.total_count} >= 1000) {
+         if(!confirm("出力データが #{@users.total_count} 件あるため、時間がかかる可能性があります。")) {
+             return false;
+         }
+      }
+  });

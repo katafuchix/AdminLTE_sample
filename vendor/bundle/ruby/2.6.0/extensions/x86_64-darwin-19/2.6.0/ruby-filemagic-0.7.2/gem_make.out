@@ -1,0 +1,21 @@
+current directory: /Users/cano/personal/rails/AdminLTE_sample/vendor/bundle/ruby/2.6.0/gems/ruby-filemagic-0.7.2/ext/filemagic
+/Users/cano/.rbenv/versions/2.6.6/bin/ruby -I /Users/cano/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20201101-29797-1sufggy.rb extconf.rb
+checking for -lgnurx... no
+checking for magic_open() in -lmagic... yes
+checking for magic.h... yes
+checking for magic_version()... yes
+checking for file/patchlevel.h... no
+creating Makefile
+
+current directory: /Users/cano/personal/rails/AdminLTE_sample/vendor/bundle/ruby/2.6.0/gems/ruby-filemagic-0.7.2/ext/filemagic
+make "DESTDIR=" clean
+
+current directory: /Users/cano/personal/rails/AdminLTE_sample/vendor/bundle/ruby/2.6.0/gems/ruby-filemagic-0.7.2/ext/filemagic
+make "DESTDIR="
+compiling filemagic.c
+linking shared-object filemagic/ruby_filemagic.bundle
+ld: warning: directory not found for option '-L/opt/local/lib'
+
+current directory: /Users/cano/personal/rails/AdminLTE_sample/vendor/bundle/ruby/2.6.0/gems/ruby-filemagic-0.7.2/ext/filemagic
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ruby_filemagic.bundle ./.gem.20201101-29797-oijurs/filemagic

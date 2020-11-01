@@ -1,0 +1,44 @@
+- Bullet.enable = false
+.user-match-head-margin style="height: 10px; margin-top: 30px;"
+.row
+  .panel.panel-default.col-lg-6.col-md-10.col-sm-12.col-xs-12
+    .panel-heading
+      = 'マッチングしているお相手一覧'
+    .panel-body
+      p ソート: 最近やり取りした順
+    table.table
+      thead
+        tr
+          td = 'お相手'
+          td = 'マッチング日時'
+          td = '最終更新'
+          td
+          td
+
+      tbody
+        - if user_matches.length > 0
+          - user_matches.each do |user_match|
+            - pair = user_match.user == @user ? user_match.target_user : user_match.user
+            tr
+              td = link_to pair.try(:name), [:admin, pair]
+              td = user_match.created_at.strftime('%Y/%m/%d %H:%M')
+              - latest_message_created_at = user_match.message_last_updated_at
+              - if latest_message_created_at.present?
+                td = time_ago_in_words(latest_message_created_at)
+              - else
+                td = '-'
+              td = link_to [:admin, user_match]
+                button.btn.btn-success
+                  = "メッセージ "
+                  span.badge = user_match.messages_count
+              td
+                = link_to admin_user_match_path(user_match.id), data: { confirm: '本当に削除しますか？' }, method: :delete do
+                  button.btn.btn-danger = I18n.t('helpers.submit.destroy')
+        - else
+          tr
+            td = 'マッチングしているお相手がいません'
+            td
+            td
+            td
+            td
+- Bullet.enable = true

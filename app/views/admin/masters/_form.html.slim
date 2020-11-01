@@ -1,0 +1,28 @@
+- provide(:title, @content_class.model_name.human)
+- provide(:subtitle, @content_class.human_attribute_name(controller.action_name))
+= form_for [:admin, @content], data: { remote: true } do |f|
+  .form-group
+    .clearfix
+      .pull-right
+        - submit_action = @content.persisted? ? :update : :create
+        = f.submit I18n.t(submit_action, scope: 'helpers.submit'), class: 'btn btn-success btn-space'
+        = link_to controller: :masters, action: :index do
+          button.btn.btn-danger.btn-space type="button" = I18n.t('helpers.submit.back')
+  .form-group
+    .clearfix
+      .col-sm-3
+        = @content_class.human_attribute_name :name
+      .col-sm-9
+        = f.text_field :name, required: true, class: 'form-control'
+  .form-group
+    .clearfix
+      .col-sm-3
+        = @content_class.human_attribute_name :enabled
+      .col-sm-9
+        = f.select :enabled, {:'表示' => true, :'非表示' => false}, {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = @content_class.human_attribute_name :sort_order
+      .col-sm-9
+        = f.text_field :sort_order, required: true, pattern: '^[0-9]+$', class: 'form-control'

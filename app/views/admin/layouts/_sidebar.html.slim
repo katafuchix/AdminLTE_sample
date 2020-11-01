@@ -1,0 +1,64 @@
+.am-left-sidebar
+  .content
+    /= image_tag 'logo-white', class: 'am-logo object-fit-contain width-330 height-80'
+    ul.sidebar-elements
+      li.parent[class="#{controller.controller_name == 'users' ? 'active' : nil}"]
+        a[href=admin_users_path]
+          i.icon.s7-user
+          span 会員
+    ul.sidebar-elements
+      li.parent[class="#{controller.controller_name == 'user_profiles' ? 'active' : nil}"]
+        a[href=pending_admin_user_profiles_comment_index_path]
+          i.icon.s7-smile
+          span = UserProfile.human_attribute_name :text
+          - unless @pending_status_count.values.sum.zero?
+            span.badge = @pending_status_count.values.sum
+    ul.sidebar-elements
+      li.parent[class="#{controller.controller_name == 'user_age_certifications' ? 'active' : nil}"]
+        a[href=""]
+          i.icon.s7-credit
+          span =
+          - count = 0
+          - if count > 0
+            span.badge.badge = count
+    ul.sidebar-elements
+      li.parent[class="#{controller.controller_name == 'user_income_certifications' ? 'active' : nil}"]
+        a[href=""]
+          i.icon.s7-piggy
+          span =
+          - count = 0
+          - if count > 0
+            span.badge.badge = count
+    ul.sidebar-elements
+      li.parent[class="#{controller.controller_name == 'user_relations' ? 'active' : nil}"]
+        a[href=""]
+          i.icon.s7-like2
+          span =
+          - count = 0
+          - if count > 0
+            span.badge.badge = count
+    ul.sidebar-elements
+      li.parent[class="#{controller.controller_name == 'profile_images' ? 'active' : nil}"]
+        a[href=""]
+          i.icon.s7-photo
+          span =
+          - count = 0
+          - if count > 0
+            span.badge.badge = count
+      li.parent[class="#{controller.controller_name == 'user_violations' ? 'active' : nil}"]
+        a[href=""]
+          i.icon.s7-delete-user
+          span =
+          - count = 0
+          - if count > 0
+            span.badge.badge = count
+      li.parent[class="#{controller.controller_name == 'masters' ? 'active' : nil}"]
+        a[href=admin_annual_incomes_path]
+          i.icon.s7-server
+          span マスタ
+  - if current_admin_user.higher_admin?
+    ul.sidebar-elements
+      li.parent[class="#{controller.controller_name == 'manage_roles' ? 'active' : nil}"]
+        a[href=admin_admin_users_path]
+          i.icon.s7-headphones
+          span 管理者管理

@@ -1,0 +1,15 @@
+- provide(:title, 'マイページ')
+- provide(:subtitle, 'ダッシュボード')
+row
+  div.col-sm-4
+    div.card
+      div.card-block
+        h3.card-title 基本情報設定
+        p.card-text 名前, メールアドレス, パスワードを変更はこちらから行ってください。
+        a class=["btn","btn-primary"] href=edit_admin_my_basic_infos_path 設定する
+  div.col-sm-4
+    div.card
+      div.card-block
+        h3.card-title メール通知設定
+        p.card-text 各種メール通知の設定はこちらから行ってください。
+        a class=["btn","btn-primary"] href=edit_admin_my_notify_settings_path 設定する

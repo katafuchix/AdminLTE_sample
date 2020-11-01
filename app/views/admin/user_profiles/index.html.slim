@@ -1,0 +1,123 @@
+- controller_name = controller.controller_name
+- action = controller.action_name.to_sym
+- model = Object.const_get(controller.controller_name.camelize.classify)
+- provide(:title, "#{model.model_name.human}  >  #{UserProfile.human_attribute_name @target_column}")
+- provide(:subtitle, model.human_attribute_name(action))
+- @paginate = @user_profiles
+= content_for(:unorder_lits_links)
+  - [:pending, :accepted, :rejected].each do |status|
+    - link_text = model.human_attribute_name(status)
+    - path = public_send("#{status}_admin_#{controller_name}_#{@target_column}_index_path")
+    li
+      = link_to path do
+        = link_text
+        | &nbsp;
+        - status_count = model.public_send("#{@target_column}_#{status}").where.not(@target_column => nil).count
+        span.badge.badge-primary = status_count unless status_count.zero?
+  - %w(comment good_place date_place dream school_name hobby job_name tweet).each do |col|
+    li[class="#{controller.controller_name == 'user_profiles' && @target_column.to_s == col ? 'active' : nil}"]
+      = link_to public_send(%[pending_admin_user_profiles_#{col}_index_path]) do
+        = UserProfile.human_attribute_name(col)
+        | &nbsp;
+        - if @pending_status_count["#{col}_count"] > 0
+          span.badge = @pending_status_count["#{col}_count"]
+- unless @user_profiles.first.nil?
+  .xs-mb-15
+    - unless action == :rejected
+      button.btn.btn-primary.btn-space#reject_all
+        i.icon.s7-close
+        span NG
+    - unless action == :accepted
+      button.btn.btn-success.btn-space#accept_all
+        i.icon.s7-check
+        span OK
+table.table
+  thead
+    tr
+      th = check_box_tag 'all'
+      th.visible-lg.visible-md = model.human_attribute_name action == :pending ? :updated_at : :confirmed_at
+      th.visible-lg.visible-md = model.human_attribute_name :name
+      th.visible-lg.visible-md = model.human_attribute_name :age
+      th.visible-lg.visible-md 年齢確認
+      th = model.human_attribute_name @target_column
+      th.visible-lg.visible-md = model.human_attribute_name :icon
+      - if action == :accepted || action == :rejected
+        th.visible-lg.visible-md 担当者
+      th.visible-lg.visible-md
+      th.visible-lg.visible-md
+  tbody
+    - @user_profiles.each do |user_profile|
+      tr
+        td = check_box_tag 'ids[]', user_profile.id
+        td.visible-lg.visible-md = l(action == :pending ? user_profile.updated_at : user_profile.confirmed_at(@target_column))
+        td.visible-lg.visible-md = current_admin_user.higher_admin? ? link_to(user_profile.name, [:admin, user_profile.user]) : user_profile.name
+        td.visible-lg.vislble-md = user_profile.try(:age)
+        td.visible-lg.visible-md = user_profile.user.age_certified? ? '☓' : '◯'
+        td.width-500.ps-relative
+          div.height-100.width-full.break-all-with-auto-overflow.visible-lg.visible-md
+            = user_profile.public_send(@target_column)
+          a.hidden-lg.hidden-md[data-toggle="modal", data-target="#image-box-modal-#{user_profile.id}"]
+            = user_profile.public_send(@target_column)
+        td
+          a[data-toggle="modal", data-target="#image-box-modal-#{user_profile.id}"]
+            /= image_tag user_profile.user.user_profile.icon, class: 'square-100-image-contain visible-lg visible-md'
+          .modal[tabindex="-1", role="dialog" id="image-box-modal-#{user_profile.id}"]
+            .modal-dialog.width-eight-out-of-ten
+              .modal-content.max-width-full
+                .modal-body
+                  div.hidden-lg.hidden-md
+                    table.table
+                      thead
+                        tr
+                          th = model.human_attribute_name @target_column
+                      tbody
+                        tr
+                          td
+                            = user_profile.public_send(@target_column)
+                  div.width-full.ps-relative.height-600.visible-lg.visible-md
+                    div.width-half.height-450.ps-absolute.ps-left-zero.auto-overflow
+                      = link_to user_profile.user.user_profile.main_image_url(skip_icon_public_check: true) do
+                        = image_tag user_profile.user.user_profile.main_image_url(skip_icon_public_check: true), class: 'square-nine-out-of-ten-image-contain'
+                    div.width-half.ps-absolute.height-450.ps-left-half.break-all-with-auto-overflow
+                      - if current_admin_user.higher_admin?
+                        dl.dl-horizontal
+                          /- user_profile.user.slice(:email, :sign_in_count, :current_sign_in_at).each do |k, v|
+                            dt = k
+                            dd = v
+                          - user_profile.user.user_profile.actual_values(skip_icon_public_check: true).each do |k, v|
+                            dt = k
+                            dd = v
+                    div.width-full.height-150.ps-absolute.ps-bottom-zero
+                      table.table
+                        thead
+                          tr
+                            th = model.human_attribute_name @target_column
+                        tbody
+                          tr
+                            td
+                              div.height-100.break-all-with-auto-overflow
+                                = user_profile.public_send(@target_column)
+                .modal-footer
+                    a[data-toggle="modal" data-target="#image-box-ng-modal-#{user_profile.id}" style="margin-right: 5px;"]
+                      = button_tag 'NG', class: 'btn btn-lg btn-danger', data: { disable_with: 'sending...' }
+                    = link_to 'OK', public_send("admin_user_profiles_#{@target_column}_path", user_profile), method: :put, data: {remote: true}, class: 'btn btn-lg btn-success modal-close' unless action == :accepted
+        - if action == :accepted || action == :rejected
+          td = user_profile.public_send("#{@target_column}_admin_user") ? user_profile.public_send("#{@target_column}_admin_user").name : ''
+        td
+          a[id="image-box-ng-link-#{user_profile.id}" data-toggle="modal" data-target="#image-box-ng-modal-#{user_profile.id}" class="btn btn-lg btn-danger visible-lg visible-md"] NG
+          .modal[id="image-box-ng-modal-#{user_profile.id}"]
+            .modal-dialog
+              .modal-content
+                .modal-body
+                  = form_for(user_profile, url: public_send("admin_user_profiles_#{@target_column}_path", user_profile) , html: {method: :delete}) do |f|
+                    .form-group
+                      = f.text_field "#{@target_column}_rejected_reason".to_sym, class: 'form-control', required: true, placeholder: '入力必須', onClick: '$(this).next().children().children().prop("checked", false);'
+                      span
+                        = f.collection_radio_buttons :to_s, I18n.t("rejected_reason.user_profile").map { |m| Kernel.format(m, {name: model.human_attribute_name(@target_column)})}, :to_s, :to_s, {}, onChange: '$(this).parent().parent().prev().val($(this).val());' do |b|
+                         label = b.radio_button + b.text
+                    = button_tag 'NG', class: 'btn btn-primary', type: 'submit', method: 'delete', data: { disable_with: 'sending...' }
+                .modal-footer
+                  button.btn.btn-secondary[data-dismiss="modal" data-target="#image-box-ng-modal-#{user_profile.id}"] Close
+        td.visible-lg.visible-md = link_to 'OK', public_send("admin_user_profiles_#{@target_column}_path", user_profile), method: :put, data: {remote: true}, class: 'btn btn-lg btn-success' unless action == :accepted
+
+= render partial: 'admin/layouts/reject_module', locals: { accept_path: public_send("accept_selected_admin_user_profiles_#{@target_column}_index_path"), reject_path: public_send("reject_selected_admin_user_profiles_#{@target_column}_index_path"), reason_model: :user_profile, reason_field: "#{@target_column}_rejected_reason".to_sym, item_name: "#{@target_column}" }

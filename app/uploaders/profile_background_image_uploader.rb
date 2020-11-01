@@ -1,0 +1,2 @@
+class ProfileBackgroundImageUploader < BaseUploader
+end

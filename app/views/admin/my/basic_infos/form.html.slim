@@ -1,0 +1,34 @@
+- action = controller.action_name.to_sym
+- model = Object.const_get('Admin').const_get('User')
+- provide(:title, 'マイページ')
+- provide(:subtitle, '基本情報設定')
+= form_for @admin_user, url: admin_my_basic_infos_path do |f|
+  div.form-group
+    .clearfix
+      .col-sm-3
+        = model.human_attribute_name :name
+      .col-sm-9
+        = f.text_field :name, class: 'form-control'
+  div.form-group
+    .clearfix
+      .col-sm-3
+        = model.human_attribute_name :email
+      .col-sm-9
+        = f.email_field :email, class: 'form-control'
+  div.form-group
+    .clearfix
+      .col-sm-3
+        = model.human_attribute_name :password
+      .col-sm-9
+        = f.password_field :password, class: 'form-control'
+  div.form-group
+    .clearfix
+      .col-sm-3
+        = model.human_attribute_name :password_confirmation
+      .col-sm-9
+        = f.password_field :password_confirmation, class: 'form-control'
+  div.form-group
+    = f.submit I18n.t('helpers.submit.update'), class: 'btn btn-success apply'
+  div.form-group
+  = link_to controller: :dashboards, action: :show do
+    button.btn.btn-danger type="button" = I18n.t('helpers.submit.back')

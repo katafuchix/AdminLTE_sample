@@ -1,0 +1,33 @@
+- action = controller.action_name.to_sym
+- model = Object.const_get('Admin').const_get('UserNotify')
+- provide(:title, 'マイページ')
+- provide(:subtitle, 'メール通知設定')
+= form_for @admin_user_notify, url: admin_my_notify_settings_path do |f|
+  table.table
+    thead
+      tr
+        th 通知内容
+        th メール受信
+    tbody
+      tr
+        td
+          = model.human_attribute_name :user_certification_notify
+        td
+          = f.check_box :user_certification_notify, {}
+      tr
+        td
+          = model.human_attribute_name :profile_image_notify
+        td
+          = f.check_box :profile_image_notify, {}
+      tr
+        td
+          = model.human_attribute_name :user_profile_notify
+        td
+          = f.check_box :user_profile_notify, {}
+      - if current_admin_user.admin?
+        == render partial: 'admin/my/layouts/admin_notify', locals: { model: model, f: f }
+  div.form-group
+    = f.submit I18n.t('helpers.submit.update'), class: 'btn btn-success apply'
+  div.form-group
+  = link_to controller: :dashboards, action: :show do
+    button.btn.btn-danger type="button" = I18n.t('helpers.submit.back')

@@ -1,0 +1,83 @@
+- controller_name = controller.controller_name
+- action = controller.action_name.to_sym
+- model = Object.const_get(controller.controller_name.camelize.classify)
+- provide(:title, model.model_name.human)
+- provide(:subtitle, model.human_attribute_name(action))
+- @paginate = @profile_images
+= content_for(:unorder_lits_links)
+  - [:pending, :accepted, :rejected].each do |status|
+    - link_text = model.human_attribute_name(status)
+    - path = public_send("#{status}_admin_#{controller_name}_path")
+    li = link_to link_text, path
+- unless @profile_images.first.nil?
+  .xs-mb-15
+    - unless action == :rejected
+      button.btn.btn-primary.btn-space#reject_all
+        i.icon.s7-close
+        span NG
+    - unless action == :accepted
+      button.btn.btn-success.btn-space#accept_all
+        i.icon.s7-check
+        span OK
+table.table
+  thead
+    tr
+      th = check_box_tag 'all'
+      th.visible-lg.visible-md = model.human_attribute_name action == :pending ? :updated_at : :confirmed_at
+      - if current_admin_user.higher_admin?
+        th.visible-lg.visible-md = User.human_attribute_name :email
+      th.visible-lg.visible-md = UserProfile.human_attribute_name :name
+      th = UserProfile.human_attribute_name :sex
+      th.visible-lg.visible-md = UserProfile.human_attribute_name :age
+      th
+      th = model.human_attribute_name :icon
+      - if action == :accepted || action == :rejected
+        th.visible-lg.visible-md 担当者
+      th.visible-lg.visible-md
+      th.visible-lg.visible-md
+  tbody
+    - @profile_images.each do |profile_image|
+      tr
+        td = check_box_tag 'ids[]', profile_image.id
+        td.visible-lg.visible-md = l(action == :pending ? profile_image.updated_at : profile_image.image_confirmed_at)
+        - if current_admin_user.higher_admin?
+          td.visible-lg.visible-md = profile_image.user_profile.user.email
+        td.visible-lg.visible-md = current_admin_user.higher_admin? ? link_to(profile_image.user_profile.name, [:admin, profile_image.user]) : profile_image.user_profile.name
+        td = profile_image.user_profile.sex_i18n
+        td.visible-lg.visible-md = profile_image.user_profile.age
+        td
+          .label.label-info = profile_image.sort_order.zero? ? 'メイン' : nil
+        td
+          a[data-toggle="modal", data-target="#image-box-modal-#{profile_image.id}"]
+            .visible-lg.visible-md = image_tag profile_image.image, class: 'square-100-image-contain'
+            .hidden-lg.hidden-md = image_tag profile_image.image, class: 'square-nine-out-of-ten-image-contain'
+          .modal[tabindex="-1", role="dialog" id="image-box-modal-#{profile_image.id}"]
+            .modal-dialog.width-eight-out-of-ten
+              .modal-content.max-width-full
+                .modal-body
+                  = link_to profile_image.image_url do
+                    = image_tag profile_image.image, class: 'square-half-image-contain'
+                .modal-footer
+                    a[data-toggle="modal" data-target="#image-box-ng-modal-#{profile_image.id}" class="margin-right-5"]
+                      = button_tag 'NG', class: 'btn btn-lg btn-danger', data: { disable_with: 'sending...' }
+                    = link_to 'OK', [:admin, profile_image], method: :put, data: {remote: true}, class: 'btn btn-lg btn-success modal-close' unless action == :accepted
+        - if action == :accepted || action == :rejected
+          td = profile_image.image_admin_user ? profile_image.image_admin_user.name : ''
+        td
+          a[id="image-box-ng-link-#{profile_image.id}" data-toggle="modal" data-target="#image-box-ng-modal-#{profile_image.id}" class="btn btn-lg btn-primary visible-lg visible-md"] NG
+          .modal[id="image-box-ng-modal-#{profile_image.id}"]
+            .modal-dialog
+              .modal-content
+                .modal-body
+                  = form_for([:admin, profile_image], html: { method: :delete }) do |f|
+                    .form-group
+                      = f.text_field :image_rejected_reason, class: 'form-control', required: true, placeholder: '入力必須', onClick: '$(this).next().children().children().prop("checked", false);'
+                      span
+                        = f.collection_radio_buttons :to_s, I18n.t("rejected_reason.profile_image"), :to_s, :to_s, {}, onChange: '$(this).parent().parent().prev().val($(this).val());' do |b|
+                          label = b.radio_button + b.text
+                    = button_tag 'NG', class: 'btn btn-primary', type: 'submit', method: 'delete', data: { disable_with: 'sending...' }
+                .modal-footer
+                  button.btn.btn-secondary[data-dismiss="modal" data-target="#image-box-ng-modal-#{profile_image.id}"] Close
+        td.visible-lg.visible-md = link_to 'OK', [:admin, profile_image], method: :put, data: {remote: true}, class: 'btn btn-lg btn-success' unless action == :accepted
+
+= render partial: 'admin/layouts/reject_module', locals: { accept_path: accept_selected_admin_profile_images_path, reject_path: reject_selected_admin_profile_images_path, reason_model: :profile_image, reason_field: :image_rejected_reason, item_name: 'プロフ画像' }

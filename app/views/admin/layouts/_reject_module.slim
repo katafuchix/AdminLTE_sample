@@ -1,0 +1,47 @@
+.modal[id="modal-items-ng"]
+  .modal-dialog
+    = form_tag(reject_path, method: :post, class: 'modal-content', id: 'reject_form') do
+      .modal-body
+        = text_field reason_model, reason_field, class: 'form-control', required: true, placeholder: '入力必須', onClick: '$(this).next().children().children().prop("checked", false);'
+        span
+          - I18n.t("rejected_reason.#{reason_model}").map { |m| Kernel.format(m, {name: Object.const_get(reason_model.to_s.classify).human_attribute_name(item_name)})}.each do |b|
+            label
+              = radio_button :to_s, :to_s, b, onChange: '$(this).parent().parent().prev().val($(this).val());'
+              = b
+        = button_tag class: 'btn btn-primary', type: 'submit', data: { disable_with: 'sending...' }
+          = '選択された' + item_name + 'をNGにする'
+        button.btn.btn-secondary[data-dismiss="modal" data-target="#modal-items-ng"] Close
+
+= form_tag(accept_path, method: :post, id: 'accept_form') do
+
+javascript:
+  activate_btns();
+  $("input#all").click(function() {
+    $("td input[type='checkbox']").prop('checked', $(this).prop('checked'));
+    activate_btns();
+  });
+  $("td input[type='checkbox']").click(activate_btns);
+
+  $("#reject_all").click(function() {
+    $("#reject_form input[name='ids[]']").remove();
+    $("td input[type='checkbox']:checked").each(function() {
+      $("#reject_form").append($("<input>").attr({ type: 'hidden', name: 'ids[]' }).val($(this).val()));
+    });
+    $('#modal-items-ng').modal('show');
+  });
+
+  $("#accept_all").click(function() {
+    $("#accept_form input[name='ids[]']").remove();
+    $("td input[type='checkbox']:checked").each(function() {
+      $("#accept_form").append($("<input>").attr({ type: 'hidden', name: 'ids[]' }).val($(this).val()));
+    });
+    $("#accept_form").submit();
+  });
+
+  function activate_btns() {
+    if($("td input[type='checkbox']:checked").length > 0) $("#reject_all, #accept_all").attr('disabled', false);
+    else $("#reject_all, #accept_all").attr('disabled', true);
+  }
+
+css:
+  .modal-header.modal-title { border-bottom:#e5e5e5 solid 1px; font-weight:bold; }

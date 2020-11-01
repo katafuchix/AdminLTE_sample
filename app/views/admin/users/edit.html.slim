@@ -1,0 +1,191 @@
+- controller_name = controller.controller_name
+- action = controller.action_name.to_sym
+- user_model = Object.const_get('User')
+- user_profile_model = Object.const_get('UserProfile')
+= form_for [:admin, @user] do |f|
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_model.human_attribute_name :email
+      .col-sm-9
+        = f.email_field :email, class: 'form-control'
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_model.human_attribute_name :mobile_phone
+      .col-sm-9
+        = f.text_field :mobile_phone, class: 'form-control'
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_model.human_attribute_name :password
+      .col-sm-9
+        = f.password_field :password, autocomplete: 'new-password', class: 'form-control'
+
+  .form-group
+    = f.submit I18n.t('helpers.submit.update'), class: 'btn btn-success apply btn-space'
+
+hr
+hr
+
+= form_for [:admin, @user_profile], url: update_profile_admin_user_path do |f|
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :name
+      .col-sm-9
+        = f.text_field :name, class: 'form-control'
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :sex
+      .col-sm-9
+        = f.select :sex, options_for_select(UserProfile.sexes_i18n.invert, @user_profile.sex), {}, {class: 'form-control'}
+
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :birthday
+      .col-sm-9
+        = f.datetime_field :birthday, class: 'form-control'
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_address_id
+      .col-sm-9
+        = f.select :prof_address_id, options_from_collection_for_select(Master::Prefecture.all, :id, :name,  @user_profile.prof_address_id), {}, {class: 'form-control'}
+
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :comment
+      .col-sm-9
+        = f.text_field :comment, class: 'form-control'
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :tweet
+      .col-sm-9
+        = f.text_field :tweet, class: 'form-control'
+
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_job_id
+      .col-sm-9
+        = f.select :prof_job_id, options_from_collection_for_select(Master::Job.all, :id, :name, @user_profile.prof_job_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :job_name
+      .col-sm-9
+        = f.text_field :job_name, class: 'form-control'
+
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :height
+      .col-sm-9
+        = f.number_field :height, class: 'form-control'
+
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_annual_income_id
+      .col-sm-9
+        = f.select :prof_annual_income_id, options_from_collection_for_select(Master::AnnualIncome.all, :id, :name, @user_profile.prof_annual_income_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_drinking_habit_id
+      .col-sm-9
+        = f.select :prof_drinking_habit_id, options_from_collection_for_select(Master::DrinkingHabit.all, :id, :name,  @user_profile.prof_drinking_habit_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_expect_support_money_id
+      .col-sm-9
+        = f.select :prof_expect_support_money_id, options_from_collection_for_select(Master::ExpectSupportMoney.all, :id, :name,  @user_profile.prof_expect_support_money_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_educational_background_id
+      .col-sm-9
+        = f.select :prof_educational_background_id, options_from_collection_for_select(Master::EducationalBackground.all, :id, :name,  @user_profile.prof_educational_background_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_figure_id
+      .col-sm-9
+        = f.select :prof_figure_id, options_from_collection_for_select(Master::Figure.all, :id, :name,  @user_profile.prof_figure_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_first_date_cost_id
+      .col-sm-9
+        = f.select :prof_first_date_cost_id, options_from_collection_for_select(Master::FirstDateCost.all, :id, :name,  @user_profile.prof_first_date_cost_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_have_child_id
+      .col-sm-9
+        = f.select :prof_have_child_id, options_from_collection_for_select(Master::HaveChild.all, :id, :name,  @user_profile.prof_have_child_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_holiday_id
+      .col-sm-9
+        = f.select :prof_holiday_id, options_from_collection_for_select(Master::Holiday.all, :id, :name,  @user_profile.prof_holiday_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_marriage_id
+      .col-sm-9
+        = f.select :prof_marriage_id, options_from_collection_for_select(Master::Marriage.all, :id, :name,  @user_profile.prof_marriage_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_personality_id
+      .col-sm-9
+        = f.select :prof_personality_id, options_from_collection_for_select(Master::Personality.all, :id, :name,  @user_profile.prof_personality_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_request_until_meet_id
+      .col-sm-9
+        = f.select :prof_request_until_meet_id, options_from_collection_for_select(Master::RequestUntilMeet.all, :id, :name,  @user_profile.prof_request_until_meet_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_smoking_habit_id
+      .col-sm-9
+        = f.select :prof_smoking_habit_id, options_from_collection_for_select(Master::SmokingHabit.all, :id, :name,  @user_profile.prof_smoking_habit_id), {}, {class: 'form-control'}
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :prof_birth_place_id
+      .col-sm-9
+        = f.select :prof_birth_place_id, options_from_collection_for_select(Master::Prefecture.all, :id, :name,  @user_profile.prof_birth_place_id), {}, {class: 'form-control'}
+
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :dream
+      .col-sm-9
+        = f.text_field :dream, class: 'form-control'
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :school_name
+      .col-sm-9
+        = f.text_field :school_name, class: 'form-control'
+  .form-group
+    .clearfix
+      .col-sm-3
+        = user_profile_model.human_attribute_name :hobby
+      .col-sm-9
+        = f.text_field :hobby, class: 'form-control'
+
+  .form-group
+    = f.submit I18n.t('helpers.submit.update'), class: 'btn btn-success apply btn-space'
+= link_to I18n.t('helpers.submit.back'), admin_user_path(@user), class: 'btn btn-success apply'

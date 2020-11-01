@@ -1,0 +1,85 @@
+- controller_name = controller.controller_name
+- action = controller.action_name.to_sym
+- model = Object.const_get(controller.controller_name.camelize.classify)
+- provide(:title, "#{model.model_name.human}")
+- provide(:subtitle, '検索')
+- @paginate = @users
+
+/== render partial: 'search'
+
+table.table
+  thead
+    tr
+      th.visible-lg.visible-md = model.human_attribute_name :created_at
+      th = "user_id"
+      th = model.human_attribute_name :name
+      th.visible-lg.visible-md
+      th = model.human_attribute_name :icon
+      th = UserPointPayment.human_attribute_name :remain_point
+      th = User.human_attribute_name :remain_relation_count
+      th = PurchasePayingmember.model_name.human
+      th
+      th.visible-lg.visible-md
+      th.visible-lg.visible-md
+      th.visible-lg.visible-md
+      th.visible-lg.visible-md プッシュ通知
+  tbody
+    - @users.each do |user|
+      tr
+        td.visible-lg.visible-md = l(user.created_at)
+        td
+           = user.id
+        td
+           = link_to user.name, [:admin, user]
+           = user.user_profile.sex_i18n
+        td.width-500.ps-relative.visible-lg.visible-md
+          div.ps-absolute.break-all-with-auto-overflow.height-60.width-full
+            dl.dl-horizontal
+              - user.slice(:sign_in_count, :current_sign_in_at).each do |k, v|
+                dt = k
+                dd = v
+        td
+          a[data-toggle="modal", data-target="#image-box-modal-#{user.id}"]
+            = image_tag user.user_profile.main_image_url(skip_icon_public_check: true), class: 'square-100-image-contain'
+          == render partial: 'modal', locals: { user: user }
+        td
+          = @pater_points[user.id] || 0
+        td
+          = user.remain_relation_count
+        td
+          - if user.no_charging_member?
+            = '無料会員'
+          - elsif user.normal_charging_member?
+            = '有料会員'
+          - elsif user.premium_charging_member?
+            = 'プレミアム'
+        td.visible-lg.visible-md
+          - if user.deleted_at.nil?
+            a[data-toggle="modal", data-target="#user-leaving-modal-#{user.id}" class="btn btn-sm btn-danger"] 退会
+            .modal[tabindex="-1", role="dialog" id="user-leaving-modal-#{user.id}"]
+              .modal-dialog
+                .modal-content
+                  .modal-body
+                    = form_tag [:admin, user], method: :delete do
+
+                      .form-group
+                        = text_area_tag :message, I18n.t('user_leaving_mailer.create.message', username: user.name), class: 'form-control', rows: 15
+                      .form-group
+                        = submit_tag '退会', class: 'btn btn-sm btn-danger'
+          - else
+            = link_to '戻す', restore_soft_destroy_admin_user_path(user),  method: :put, data: {remote: true, confirm: "退会したユーザをもどします。よろしいですか？"}, class: 'btn btn-sm btn-success'
+        td.visible-lg.visible-md
+          - @purchase_points.each do |p|
+            = link_to p.name, purchase_point_admin_user_path(id: user.id, purchase_point_id: p.id), method: :put, data: {remote: true, confirm: "#{p.name}を追加します"}, class: 'btn btn-xs'
+        td.visible-lg.visible-md
+          - @relation_counts.each do |r|
+            = link_to "#{r}いいね！", add_relation_count_admin_user_path(id: user.id, add_relation_count: r), method: :put, data: {remote: true, confirm: "#{r}いいね!を追加します"}, class: 'btn btn-xs'
+        td.visible-lg.visible-md
+          - @purchase_payingmembers.each do |p|
+            = link_to p.name, purchase_payingmember_admin_user_path(id: user.id, purchase_payingmember_id: p.id), method: :put, data: {remote: true, confirm: "#{p.name}にします"}, class: 'btn btn-xs'
+        td.visible-lg.visible-md
+          - if user.user_profile.sex == 'male'
+            - if user.notification_sent?
+              = link_to '配信済', '', class: 'btn btn-sm btn-default disabled'
+            - else
+              = link_to '配信する', send_notification_admin_user_path(id: user.id), method: :put, data: {remote: true, confirm: "本当にプッシュ通知を配信しますか？"}, class: 'btn btn-sm btn-success'

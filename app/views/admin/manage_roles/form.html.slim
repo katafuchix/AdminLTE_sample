@@ -1,0 +1,43 @@
+- controller_name = controller.controller_name
+- action = controller.action_name.to_sym
+- model = Object.const_get('Admin::User')
+- provide(:title, model.model_name.human)
+- provide(:subtitle, model.human_attribute_name(action))
+= form_for [:admin, @admin_user] do |f|
+  div.form-group
+    .clearfix
+      .col-sm-3
+        = model.human_attribute_name :name
+      .col-sm-9
+        = f.text_field :name, class: 'form-control'
+  div.form-group
+    .clearfix
+      .col-sm-3
+        = model.human_attribute_name :email
+      .col-sm-9
+        = f.email_field :email, class: 'form-control'
+  div.form-group
+    .clearfix
+      .col-sm-3
+        = model.human_attribute_name :password
+      .col-sm-9
+        = f.password_field :password, class: 'form-control'
+  div.form-group
+    .clearfix
+      .col-sm-3
+        = model.human_attribute_name :password_confirmation
+      .col-sm-9
+        = f.password_field :password_confirmation, class: 'form-control'
+  div.form-group
+    .clearfix
+      .col-sm-3
+        = model.human_attribute_name :role
+      .col-sm-9
+        = f.select :role, Admin::User.roles_i18n.invert, {}, class: 'form-control'
+        /= f.select :role, Admin::User.roles, class: 'form-control'
+  div.form-group
+    = f.submit @admin_user.persisted? ? I18n.t('helpers.submit.update') : I18n.t('helpers.submit.create'), class: 'btn btn-success apply'
+    - if @admin_user.persisted?
+  div.form-group
+  = link_to controller: controller_name, action: :index do
+    button.btn.btn-danger type="button" = I18n.t('helpers.submit.back')

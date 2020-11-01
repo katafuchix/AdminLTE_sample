@@ -1,0 +1,143 @@
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'users' ? 'active' : nil}"]
+    a[href=admin_users_path]
+      i.icon.s7-user
+      span 会員
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'user_probations' ? 'active' : nil}"]
+    a[href=admin_user_probations_path]
+      i.icon.s7-anchor
+      span 要注意
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'webpages' ? 'active' : nil}"]
+    a[href=admin_webpages_path]
+      i.icon.s7-note2
+      span Webページ
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'common_notifications' || controller.controller_name == 'specified_notifications' ? 'active' : nil}"]
+    a[href=admin_specified_notifications_path]
+      i.icon.s7-alarm
+      span 通知
+    ul
+      li[class="#{controller.controller_name == 'common_notifications' ? 'active' : nil}"]
+        = link_to admin_common_notifications_path do
+          = CommonNotification.model_name.human
+      li[class="#{controller.controller_name == 'specified_notifications' ? 'active' : nil}"]
+        = link_to admin_specified_notifications_path do
+          | ユーザー指定お知らせ通知
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'inquiries' ? 'active' : nil}"]
+    a[href=admin_inquiries_path]
+      i.icon.s7-call
+      span.font-size-11 お問い合わせ
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'contacts' ? 'active' : nil}"]
+    a[href=admin_contacts_path]
+      i.icon.s7-call
+      span.font-size-11 コンタクト
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'user_matches' ? 'active' : nil}"]
+    a[href=admin_user_matches_path]
+      i.icon.s7-like
+      span マッチング
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'user_match_messages' ? 'active' : nil}"]
+    a[href=admin_user_match_messages_path]
+      i.icon.s7-mail
+      span メッセージ
+ul.sidebar-elements
+  li.parent
+    a[href=admin_user_payments_path]
+      i.icon.s7-note
+      span 契約
+    ul
+      li[class="#{controller.controller_name == 'user_payments' || controller.controller_name == 'user_payment_campaigns' || controller.controller_name == 'user_point_payments' ? 'active' : nil}"]
+        = link_to admin_user_payments_path do
+          | 契約一覧
+        ul.sub-menu
+          li[class="#{controller.controller_name == 'user_payments' ? 'active' : nil}"]
+            = link_to admin_user_payments_path, class: 'text-muted' do
+              = UserPayment.model_name.human
+          li[class="#{controller.controller_name == 'user_point_payments' ? 'active' : nil}"]
+            = link_to admin_user_point_payments_path, class: 'text-muted' do
+              = UserPointPayment.model_name.human
+    ul
+      li[class="#{controller.controller_name == 'purchase_payingmembers' || controller.controller_name == 'purchase_points' ? 'active' : nil}"]
+        = link_to admin_purchase_payingmembers_path do
+          | 基本契約設定
+        ul.sub-menu
+          li[class="#{controller.controller_name == 'purchase_payingmembers' ? 'active' : nil}"]
+            = link_to admin_purchase_payingmembers_path, class: 'text-muted' do
+              = PurchasePayingmember.model_name.human
+          li[class="#{controller.controller_name == 'purchase_points' ? 'active' : nil}"]
+            = link_to admin_purchase_points_path, class: 'text-muted' do
+              = PurchasePoint.model_name.human
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'manage_points' ? 'active' : nil}"]
+    a[href=admin_manage_points_path]
+      i.icon.s7-cash
+      span ポイント
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'purchase_payingmember_campaigns' || controller.controller_name == 'login_bonus_campaigns' ? 'active' : nil}"]
+    a[href=admin_purchase_payingmember_campaigns_path]
+      i.icon.s7-arc
+      span キャンペーン
+    ul
+      li[class="#{controller.controller_name == 'purchase_payingmember_campaigns' ? 'active' : nil}"]
+        = link_to admin_purchase_payingmember_campaigns_path do
+          = PurchasePayingmemberCampaign.model_name.human
+      li[class="#{controller.controller_name == 'login_bonus_campaigns' ? 'active' : nil}"]
+        = link_to admin_login_bonus_campaigns_path do
+          = LoginBonusCampaign.model_name.human
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'manage_banners' ? 'active' : nil}"]
+    a[href=admin_manage_banners_path]
+      i.icon.s7-menu
+      span バナー
+ul.sidebar-elements
+  li.parent
+    a[href=admin_admin_issued_invite_codes_path]
+      i.icon.s7-mail-open-file
+      span 招待
+    ul
+      li[class="#{controller.controller_name == 'admin_issuesed_invite_codes' ? 'active' : nil}"]
+        = link_to admin_admin_issued_invite_codes_path do
+          | 招待コード
+      li[class="#{controller.controller_name == 'invites' ? 'active' : nil}"]
+        = link_to admin_invites_path do
+          | キャンペーン
+ul.sidebar-elements
+  li.parent
+    a[href=admin_kpis_daily_report_path]
+      i.icon.s7-graph
+      span KPI
+    ul
+      li[class="#{controller.controller_name == 'kpis' ? 'active' : nil}"]
+        = link_to admin_kpis_daily_report_path do
+          | デイリーレポート
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'user_templates' ? 'active' : nil}"]
+    a[href=admin_user_templates_path]
+      i.icon.s7-rocket
+      span.font-size-11 テンプレート
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'tweet_templates' ? 'active' : nil}"]
+    a[href=admin_tweet_templates_path]
+      i.icon.s7-copy-file
+      span つぶやきテンプレート
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'withdrawals' ? 'active' : nil}"]
+    a[href=admin_withdrawals_path]
+      i.icon.s7-back-2
+      span.font-size-11 退会理由
+- if current_admin_user.special?
+  ul.sidebar-elements
+    li.parent[class="#{controller.controller_name == 'manage_roles' ? 'active' : nil}"]
+      a[href=admin_admin_users_path]
+        i.icon.s7-headphones
+        span 管理者管理
+ul.sidebar-elements
+  li.parent[class="#{controller.controller_name == 'masters' ? 'active' : nil}"]
+    a[href=admin_annual_incomes_path]
+      i.icon.s7-server
+      span マスタ

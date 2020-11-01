@@ -1,0 +1,53 @@
+= content_for(:unorder_lits_links)
+  li = link_to "会員検索", admin_users_path
+  li = "user_id: #{@user.id}"
+
+- subtitle = "#{@user.user_profile.age}才 #{@user.user_profile.sex_i18n}"
+- provide(:title, @user.user_profile.name)
+- provide(:subtitle, subtitle)
+== render partial: 'profile_image', locals: {user: @user}
+== render partial: 'user', locals: {user: @user}
+== render partial: 'user_match', locals: {user: @user, user_matches: @user_matches}
+- if @user.admin_user_probation
+  = link_to '要注意人物です。メモを見る', edit_admin_user_probation_path(@user.admin_user_probation)
+- else
+  = form_for @user.build_admin_user_probation do |f|
+    = f.hidden_field :user_id, value: @user.id
+    = f.submit '要注意人物にする', class: 'btn btn-sm btn-danger'
+br
+= link_to "編集", edit_admin_user_path(@user), class: 'btn btn-sm btn-danger margin-right-5'
+- if @user.deleted_at.nil?
+  a[data-toggle="modal", data-target="#user-show-leaving-modal-#{@user.id}" class="btn btn-sm btn-danger margin-right-5"] 退会
+  .modal[tabinde="-1", role="dialog" id="user-show-leaving-modal-#{@user.id}"]
+    .modal-dialog
+      .modal-content
+        .modal-body
+          = form_tag [:admin, @user], method: :delete do
+            .form-group
+              = text_area_tag :message, I18n.t('user_leaving_mailer.create.message', username: @user.name), class: 'form-control', rows: 15
+            .form-group
+              = submit_tag '退会', class: 'btn btn-sm btn-danger'
+  a[data-toggle="modal", data-target="#user-show-leaving-modal-forced-#{@user.id}" class="btn btn-sm btn-danger margin-right-5"] 強制退会
+  .modal[tabinde="-1", role="dialog" id="user-show-leaving-modal-forced-#{@user.id}"]
+    .modal-dialog
+      .modal-content
+        .modal-body
+          = form_tag [:admin, @user], method: :delete do
+            .form-group
+              = text_area_tag :message, I18n.t('user_leaving_mailer.create.forced_message', username: @user.name), class: 'form-control', rows: 15
+            .form-group
+              = hidden_field_tag :is_forced_withdrawal, true
+              = submit_tag '強制退会', class: 'btn btn-sm btn-danger'
+  = link_to '画像削除', profile_image_destroy_admin_user_path(@user), method: :delete, data: {remote: true, confirm: "このユーザーのプロフィール画像を削除します。よろしいでしょうか？"}, class: 'btn btn-sm btn-danger margin-right-5'
+- else
+  = link_to '戻す', restore_soft_destroy_admin_user_path(@user),  method: :put, data: {remote: true, confirm: "退会したユーザをもどします。よろしいですか？"}, class: 'btn btn-sm btn-success margin-right-5'
+  = link_to '画像削除', profile_image_destroy_admin_user_path(@user), method: :delete, data: {remote: true, confirm: "このユーザーのプロフィール画像を削除します。よろしいでしょうか？"}, class: 'btn btn-sm btn-danger margin-right-5'
+
+- if @user.normal_order?
+  = link_to '下位表示', toggle_search_status_admin_user_path(@user), method: :put, data: {remote: true, confirm: "このユーザーを下位表示設定します。よろしいですか？"}, class: 'btn btn-sm btn-danger margin-right-5'
+- else
+  = link_to '通常表示', toggle_search_status_admin_user_path(@user), method: :put, data: {remote: true, confirm: "このユーザーを通常表示に戻します。よろしいでしょうか？"}, class: 'btn btn-sm btn-success margin-right-5'
+  = link_to '画像削除', profile_image_destroy_admin_user_path(@user), method: :delete, data: {remote: true, confirm: "このユーザーのプロフィール画像を削除します。よろしいでしょうか？"}, class: 'btn btn-sm btn-danger margin-right-5'
+= link_to "一覧に戻る", admin_users_path, class: 'btn btn-sm btn-danger'
+
+.user_footer_margin style="height: 10px; margin-bottom: 50px;"
