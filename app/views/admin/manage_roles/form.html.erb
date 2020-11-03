@@ -36,7 +36,8 @@ model = Object.const_get('Admin::User')
 
           <section class="content">
 
-          <%= form_with(model: @admin_user, url: admin_admin_user_path, local: true) do |form| %>
+          <% url_for_upsert = @admin_user.persisted? ? admin_admin_user_path : admin_admin_users_path %>
+          <%= form_with(model: @admin_user, url: url_for_upsert, local: true) do |form| %>
 
           <!-- <% if @admin_user.errors.any? %>
             <div id="error_explanation">
@@ -61,12 +62,12 @@ model = Object.const_get('Admin::User')
 
               <div class="form-group col-sm-6">
                 <%= form.label model.human_attribute_name :password %><!-- <span class="badge badge-danger">必須</span> -->
-                <%= form.password_field :password_confirmation, class:"form-control" %>
+                <%= form.text_field :password, class:"form-control" %>
               </div>
 
               <div class="form-group col-sm-6">
                 <%= form.label model.human_attribute_name :password_confirmation %><!-- <span class="badge badge-danger">必須</span> -->
-                <%= form.password_field :password_confirmation, class:"form-control"%>
+                <%= form.text_field :password_confirmation, class:"form-control"%>
               </div>
 
               <div class="form-group col-sm-6">
