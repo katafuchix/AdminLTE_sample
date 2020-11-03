@@ -1,0 +1,9 @@
+ja:
+  views/users/configuration/message_templates:
+    show:
+      title: "paters - メッセージテンプレート設定"
+      new_message: 新しいメッセージ
+      saved: 保存しました
+      header_title: メッセージテンプレート設定
+      save: 保存
+      note: "１通目のメッセージ送信時に\n保存したメッセージが自動で挿入されます。"

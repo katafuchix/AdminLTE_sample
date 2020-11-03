@@ -1,0 +1,70 @@
+paging_per:
+  user_profile:
+    opp_list: 50
+  user_relation:
+    incomming_relations: 100
+    outcomming_relations: 100
+  user_match:
+    admin: 50
+    list: 20
+  user_message:
+    list: 100
+  user_favorite:
+    list: 20
+  user_block:
+    list: 20
+  user_display:
+    list: 20
+  user_visitors:
+    list: 20
+  user_templates:
+    list: 20
+  admin:
+    user: 20
+    user_profile: 20
+    profile_image: 20
+    user_age_certification: 20
+    webpage: 20
+    withdrawal: 20
+    user_relation: 20
+    user_match:
+      message: 60
+    contact: 20
+  user_notification:
+    list: 20
+  common_notification:
+    list: 20
+  prof_masters:
+    list: 20
+  purchase_payingmembers:
+    list: 20
+  purchase_points:
+    list: 20
+  payment_point_histories:
+    list: 5
+  user_payment:
+    list: 20
+  user_point_payment:
+    list: 20
+  user_match_message:
+    list: 50
+  invites:
+    list: 20
+  manage_point:
+    list: 20
+  manage_banners:
+    list: 20
+  manage_roles:
+    list: 20
+  inquiries:
+    list: 20
+  admin_issued_invite_codes:
+    list: 20
+  recommend_user:
+    list: 50
+  login_bonus_campaigns:
+    list: 20
+  user_blocked_phone:
+    list: 20
+  tweet_templates:
+    list: 20

@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      login_bonus_campaign: ログインボーナスキャンペーン
+    attributes:
+      login_bonus_campaign:
+        name: 名前
+        daily_serial_login_count: デイリーログイン回数
+        image: キャンペーン画像
+        campaign_type: キャンペーンタイプ
+        value: 値
+        start_at: 開始日時
+        end_at: 終了日時
+        enabled: 有効 / 無効
+        sort_order: 並び順
+  enums:
+    login_bonus_campaign:
+      campaign_type:
+        pater_point: patersポイント
+        relation_point: いいねポイント

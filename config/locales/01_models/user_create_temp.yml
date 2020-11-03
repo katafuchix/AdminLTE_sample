@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user_create_temp: 会員作成一時テーブル
+    attributes:
+      user_create_temp:
+        email: メールアドレス
+        password: パスワード
+        name: 名前
+        sex: 性別
+        birthday: 生年月日
+        prof_address_id: 居住地
+        unconfirmed_mobile_phone: 携帯電話番号
+        step: 作成ステップ
+        user_create_token: ユーザー作成トークン

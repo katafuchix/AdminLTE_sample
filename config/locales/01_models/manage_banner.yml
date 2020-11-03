@@ -1,0 +1,36 @@
+ja:
+  activerecord:
+    models:
+      manage_banner: バナー管理
+    attributes:
+      manage_banner:
+        name: バナー名
+        image: バナー画像
+        text: 説明文
+        link: リンク先URL
+        sort_order: 表示順
+        sex: 対象性別
+        age_certification: 対象の年齢確認ステータス
+        payment_type: 対象の会員購入
+  enums:
+    manage_banner:
+      sex:
+        both: 両方
+        male: 男性
+        female: 女性
+      age_certification:
+        all_age_certification: 全て
+        pending: 審査中
+        accepted: 承認済み
+        rejected: 拒否済み
+        blanked: 未提出
+      payment_type:
+        all_payment_type: 全て
+        no_charging: 無料会員
+        normal_charging: 有料会員
+        premium_charging: プレミアム会員
+  manage_banner:
+    message:
+      created: 新規バナーを作成しました
+      deleted: バナーを削除しました
+      updated: バナーを更新しました

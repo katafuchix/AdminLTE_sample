@@ -1,0 +1,165 @@
+ja:
+  search:
+    type:
+      present: あり
+      blank: なし
+      type_yes: はい
+      type_no: いいえ
+      registered: 登録済
+      unregistered: 未登録
+      discription_exists: 記載あり
+      discription_nothing: 記載なし
+    name:
+      blood: 血液型
+      dream: 将来の夢
+      comment: 自己紹介文あり
+      good_place: よく行く場所あり
+      date_place: 初回デートで行きたい場所あり
+      profile_image: 写真あり
+      free_word: フリーワード
+      age: 年齢
+      height: 身長
+      just_started: '登録日が%{day}日以内'
+      sort: 並べ替え
+      popular: 人気急上昇中
+      like_message: メッセージ好き
+      common_type: 共通点
+      last_login_date: 最終ログイン
+      popular_member: 人気会員
+      personality_list: 性格・タイプ
+      meet_at_today_dinner: 今日ディナーいけます！
+      meet_at_today_tea: 今日お茶いけます！
+      meet_at_today_lunch: 今日ランチいけます！
+    order_by:
+      user_id_asc: 登録日が古い
+      user_id_desc: 登録日が新しい
+      user_last_login_asc: 最終ログイン（昇順）
+      user_last_login_desc: 最終ログイン（降順）
+      user_name_asc: 名前順（昇順）
+      user_name_desc: 名前順（降順）
+      user_remaining_point_asc: 残ポイント（昇順）
+      user_remaining_point_desc: 残ポイント（降順）
+      user_total_popular_count_asc: 人気数（昇順）
+      user_total_popular_count_desc: 人気数（降順）
+    last_login:
+      online: オンライン
+      in_24h: 24時間以内
+      in_3days: 3日以内
+      in_1week: 1週間以内
+      in_2weeks: 2週間以内
+      in_1month: 1ヶ月以内
+      out_1month: 1ヶ月以上
+    group:
+      basic:
+        name: 基本項目
+      detail:
+        name: 詳細項目
+      other:
+        name: その他項目
+    section:
+      photo:
+        name: 写真
+        main_photo:
+          key: profile_images_count_present
+          name: メイン写真
+        sub_photo:
+          key: profile_sub_images_count_present
+          name: サブ写真
+      basic_profile:
+        name: 基本プロフィール
+        age:
+          key: age_range
+          name: 年齢
+        address:
+          key: user_profile_prof_address_id_in
+          name: 居住地
+        height:
+          key: user_profile_height_in
+          name: 身長
+        figure:
+          key: user_profile_prof_figure_id_in
+          name: 体型
+        birth_place:
+          key: user_profile_prof_birth_place_id_in
+          name: 出身地
+        educational_background:
+          key: user_profile_prof_educational_background_id_in
+          name: 学歴
+        annual_income:
+          key: user_profile_prof_annual_income_id_in
+          name: 年収
+        marriage:
+          key: user_profile_prof_marriage_id_in
+          name: 結婚
+        have_child:
+          key: user_profile_prof_have_child_id_in
+          name: 子供の有無
+      personality:
+        name: 性格・プライベート
+        personality:
+          key: personality_list_id_in
+          name: 性格・タイプ
+        drinking_habit:
+          key: user_profile_prof_drinking_habit_id_in
+          name: お酒
+        smoking_habit:
+          key: user_profile_prof_smoking_habit_id_in
+          name: タバコ
+        holiday:
+          key: user_profile_prof_holiday_id_in
+          name: 休日
+      job:
+        name: 職業
+        job:
+          key: user_profile_prof_job_id_in
+          name: 職業
+      hope_to_meet:
+        name: 出会うまでの希望
+        hope_to_meet:
+          key: user_profile_prof_request_until_meet_id_in
+          name: 出会うまでの希望
+      other_profile:
+        name: その他プロフィール
+        hobby:
+          key: user_profile_hobby_present
+          name: 好きなこと・趣味
+        good_place:
+          key: user_profile_good_place_present
+          name: よく行く場所
+        dreem:
+          key: user_profile_dream_present
+          name: 将来の夢
+        date_place:
+          key: user_profile_date_place_present
+          name: 初デートで行きたい場所
+        freeword:
+          key: freeword_cont
+          name: フリーワード
+      schedule:
+        name: スケジュール
+        lunch:
+          key: user_profile_meet_at_today_lunch_present
+          name: ランチ
+        tea:
+          key: user_profile_meet_at_today_tea_present
+          name: お茶
+        dinner:
+          key: user_profile_meet_at_today_dinner_present
+          name: ディナー
+      member_status:
+        name: 会員ステータス
+        popular:
+          key: popular_member_true
+          name: 人気会員
+        premium:
+          key: "premium_member_true"
+          name: プレミアム会員
+        online:
+          key: online_true
+          name: 現在オンライン
+        just_started:
+          key: just_started_true
+          name: 登録日が3日以内
+        login_date:
+          key: login_date_range
+          name: 最終ログイン

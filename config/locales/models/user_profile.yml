@@ -1,0 +1,64 @@
+ja:
+  activerecord:
+    models:
+      user_profile: プロフィール
+    attributes:
+      user_profile:
+        name: ニックネーム
+        icon: アイコン
+        certified: 認証済みフラグ
+        accepted: 承認済
+        rejected: 拒否済
+        pending: 審査中
+        confirmed: 確認済
+        rejected_reason: 非承認理由
+        birthday: 生年月日
+        prof_address_id: 居住地
+        comment: 自己紹介
+        good_place: よく行く場所
+        date_place: 初回デートで行きたい場所
+        sex: 性別
+        height: 身長
+        blood: 血液型
+        dream: 将来の夢
+        prof_address_id: 居住地
+        tweet: つぶやき
+        prof_job_id: 職種
+        job_name: 職業名
+        job: 職業
+        prof_annual_income_id: 年収
+        prof_drinking_habit_id: お酒
+        prof_expect_support_money_id: 希望金額
+        prof_educational_background_id: 学歴
+        prof_figure_id: 体型
+        prof_first_date_cost_id: 初回デート費用
+        prof_have_child_id: 子供の有無
+        prof_holiday_id: 休日
+        prof_marriage_id: 結婚
+        prof_personality_id: 性格
+        prof_request_until_meet_id: 出会うまでの希望
+        prof_smoking_habit_id: タバコ
+        prof_birth_place_id: 出身地
+        school_name: 学校名
+        hobby: 趣味・好きなこと
+        birthday_updated_at: 生年月日更新日
+        age: 年齢
+        meet_at_today_dinner: 今日ディナーいけます！
+        meet_at_today_tea: 今日お茶いけます！
+        meet_at_today_lunch: 今日ランチいけます！
+    errors:
+      messages:
+        birthday:
+          already_updated: 生年月日の変更は一回までしか行うことができません
+          need_before_age_confirmed: 生年月日の変更は年齢確認前にしか行うことができません
+
+  enums:
+    user_profile:
+      sex:
+        male: 男
+        female: 女
+      blood:
+        a: A型
+        b: B型
+        o: O型
+        ab: AB型

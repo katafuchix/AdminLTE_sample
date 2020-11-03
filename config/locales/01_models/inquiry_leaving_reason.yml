@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      inquiry_leaving_reason: 退会理由
+    attributes:
+      inquiry_id: お問い合わせ
+      leaving_reason_id: 退会理由

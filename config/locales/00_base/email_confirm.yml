@@ -1,0 +1,9 @@
+ja:
+  email_confirm:
+    success:
+      title: メールアドレス認証完了
+      complete: メールアドレス認証が完了しました！引き続きpatersをお楽しみください。
+    failure:
+      title: メールアドレス認証失敗
+      text: メールアドレス認証失敗
+      invalid_token: 認証トークンが不正です

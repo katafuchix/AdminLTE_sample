@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      user_income_certification: 所得証明
+    attributes:
+      user_income_certification:
+        user_id: ユーザーID
+        document_image: 所得証明書類
+        certified: 認証済みフラグ
+        accepted: 承認済
+        rejected: 拒否済
+        pending: 審査中
+        confirmed: 確認済
+        document_image_rejected_reason: 非承認理由

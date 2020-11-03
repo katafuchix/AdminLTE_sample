@@ -1,0 +1,4 @@
+ja:
+  views/users/messages:
+    show:
+      new_message: 新しいメッセージ

@@ -1,0 +1,67 @@
+online_minutes: 60
+popular_minimum: 10
+caution:
+  block_count: 1000
+account_ban:
+  violation_count: 3
+profile_images:
+  limit: 20
+pater_point:
+  limit_day: 180
+  first_month: 30
+  email_confirmed: 10
+relation_point:
+  first_month: 100
+  monthly: 30
+  payment_bonus: 50
+user_profile:
+  tweet_length: 24
+  min_comment_length: 20
+  max_comment_length: 500
+  min_good_place_length: 1
+  max_good_place_length: 30
+  min_date_place_length: 1
+  max_date_place_length: 30
+  min_dream_length: 1
+  max_dream_length: 30
+  min_school_name_length: 1
+  max_school_name_length: 30
+  min_hobby_length: 1
+  max_hobby_length: 30
+  min_job_name_length: 1
+  max_job_name_length: 30
+  min_name_length: 2
+  max_name_length: 12
+  percent_popular_member: 10
+age:
+  minimum: 18
+  maximum: 100
+height:
+  minimum: 130
+  maximum: 200
+sms:
+  from:
+  sid:
+  token:
+  tell_uri:
+  tell_data_uri:
+admin_issued_invite_code:
+  min_code_length: 6
+  max_code_length: 8
+user:
+  permium_pickup_max: 3
+  finish_create_step: 99
+  recreate_ban_day_term: 30
+  itu_code: 81
+withdrawal:
+  request_minimum_length: 30
+user_rank:
+  face_score: Math.log(score)
+  profile_comment_score: 1 * score
+  profile_image_score: 1 * score
+  charge_score: 1 * score
+  message_score: 1 * score
+  violation_score: score * score
+  outcomming_relation_score: 1 * score
+  incomming_relation_score: 1 * score
+  last_login_score: 1 * score

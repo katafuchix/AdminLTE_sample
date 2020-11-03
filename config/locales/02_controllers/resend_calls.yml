@@ -1,0 +1,4 @@
+ja:
+  users/resend_calls_controller:
+    create:
+      flash_success: 認証コードを再送信しました

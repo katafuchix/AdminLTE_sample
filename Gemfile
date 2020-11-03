@@ -62,7 +62,6 @@ gem 'piet'
 gem 'fog-aws'
 gem 'bullet'
 
-
 # API
 gem 'grape'
 gem 'hashie-forbidden_attributes'
@@ -80,3 +79,9 @@ gem 'devise-i18n'
 # DB
 gem 'ridgepole'
 gem 'seed-fu'
+
+# Paging
+gem 'kaminari'
+
+# Search
+gem 'ransack'

@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      admin/user_probation: 要注意人物
+    attributes:
+      admin/user_probation:
+        user: ユーザー
+        comment: メモ
+        created_at: 登録
+        updated_at: 更新
+  admin/user_probation:
+    message:
+      created: 要注意人物を登録しました
+      deleted: 要注意人物を解除しました
+      updated: 要注意人物のメモを更新しました
+    view:
+      back: 一覧に戻る
+      delete: 要注意人物を解除
+      comment_none: メモなし

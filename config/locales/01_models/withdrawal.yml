@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      withdrawal: 退会
+    attributes:
+      withdrawal:
+        user_id: ユーザー
+        withdrawal_type: 退会理由
+        request1: あったらいいなと思う機能やサービス
+        request2: 改善して欲しいポイント、要望
+        request3: その他、ご意見ご感想
+  enums:
+    withdrawal:
+      withdrawal_type:
+        reason1: 希望する条件に合う人とマッチングしない
+        reason2: 希望する条件に合う人がいない
+        reason3: 料金が高い
+        reason4: patersから送られてくるメールが多い
+        reason5: いいお相手と巡り合うことができた
+        reason6: プライバシーに不安がある
+        reason7: お相手とのやり取りで不快な思いをした
+        reason8: アプリをあまり使わなくなった
+        other: その他
+  withdrawal:
+    message:
+      created: 退会処理が完了しました。
+    error:
+      withdrawal_type: 退会理由を選択してください。

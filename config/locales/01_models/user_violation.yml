@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      user_violation: 違反報告
+    attributes:
+      user_violation:
+        user: ユーザー
+        user_id: ユーザID
+        target_user_id: お相手
+        violation_category: 違反箇所
+        violation_category_id: 違反箇所
+        reason: 理由

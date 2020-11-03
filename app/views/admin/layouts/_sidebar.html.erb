@@ -11,6 +11,7 @@
         <!-- Sidebar -->
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
+          <!--
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img src="<%= image_path 'user2-160x160.jpg' %>" class="img-circle elevation-2" alt="User Image">
@@ -19,6 +20,7 @@
               <a href="#" class="d-block">Alexander Pierce</a>
             </div>
           </div>
+          -->
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -48,15 +50,25 @@
                   </li>
                 </ul>
               </li>
+
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <%= link_to admin_index_path, class:"nav-link" do %>
                   <i class="nav-icon fas fa-th"></i>
                   <p>
-                    Simple Link
-                    <span class="right badge badge-danger">New</span>
+                    TOP
                   </p>
-                </a>
+                <% end %>
               </li>
+
+              <li class="nav-item">
+                <%= link_to admin_admin_users_path, class:"nav-link" do %>
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    管理者
+                  </p>
+                <% end %>
+              </li>
+
             </ul>
           </nav>
           <!-- /.sidebar-menu -->

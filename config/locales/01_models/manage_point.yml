@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      manage_point: ポイント数管理
+    attributes:
+      manage_point:
+        key: キー
+        point: ポイント
+  manage_point:
+    key:
+      send_message: メッセージ送信時patersポイント消費数
+      relation: いいね実行時いいねポイント消費数
+      relation_message: メッセージ付きいいね実行時patersポイント消費数

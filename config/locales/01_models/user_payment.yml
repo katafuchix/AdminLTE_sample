@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user_payment: 会員購入
+    attributes:
+      user_payment:
+        start_at: 開始日
+        end_at: 期限日
+        payment_type: 購入タイプ
+        enabled: 有効/無効
+  enums:
+    user_payment:
+      payment_type:
+        normal_charging: 有料会員
+        premium_charging: プレミアム会員

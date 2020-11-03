@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      user_purchase_subscription: お問い合わせ
+    attributes:
+      user_purchase_subscription:
+        user_id: ユーザー
+        expire_date: 契約更新日時
+        user_purchase_history_id: このレコードの自動課金によって作成された課金履歴ID
+        enabled: 有効 / 無効
+        canceled_at: キャンセル日
+        subscription_error: エラーメッセージ

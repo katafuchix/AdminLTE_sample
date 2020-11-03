@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      inquiry: お問い合わせ
+    attributes:
+      inquiry:
+        user_id: ユーザーID
+        inquiry_category_id: お問い合わせカテゴリ
+        detail: お問い合わせ内容
+        email: 連絡先メールアドレス
+        leaving_reason: 退会理由
+        status: ステータス
+        admin: 対応者
+        comment: 管理メモ
+        changed_at: 対応日時
+        created_at: 作成日
+      inquiry/inquiry_leaving_reasons:
+        leaving_reason: 退会理由
+  enums:
+    inquiry:
+      status:
+        not_completed: 未着手
+        completed: 完了済
+        processing: 確認中
+        reserve: 保留

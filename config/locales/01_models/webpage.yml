@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      webpage: Webページ
+    attributes:
+      webpage:
+        body_ios: iOS版本文
+        body_web: Web版本文
+        body_android: Android版本文
+        page_type: タイプ
+        require_auth: 認証
+        title: タイトル
+        updated_at: 更新日
+        url: リンクURL
+  enums:
+    webpage:
+      page_type:
+        purchase: 購入
+        help: ヘルプ
+        info: 情報
+        rule: 規約
+  webpage:
+    preview: プレビュー
+    auth:
+      auth_true: ログイン必要
+      auth_false: ログイン不要
+    message:
+      created: ページを作成しました
+      deleted: ページを削除しました
+      uniqueness_error: すでにURLが存在しています
+      updated: ページを更新しました
+      url_name_error: このURL名は使用できません

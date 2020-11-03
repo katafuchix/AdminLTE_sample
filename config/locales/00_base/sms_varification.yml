@@ -1,0 +1,34 @@
+ja:
+  sms_verification:
+    message: "patersを認証するには次のコードを入力してください: %{code} "
+    reset_password: "こちらのURLからpatersのパスワードを変更してください: %{url} "
+    number:
+      "0": ぜろ
+      "1": いち
+      "2": に
+      "3": さん
+      "4": よん
+      "5": ご
+      "6": ろく
+      "7": なな
+      "8": はち
+      "9": きゅう
+    voice: |-
+      <?xml version="1.0" encoding="UTF-8" ?>
+      <Response>
+        <Say voice="man" language="ja-jp" loop="1">
+          ペイターズをにんしょうするには、つぎのコードをにゅうりょくしてください
+        </Say>
+        <Pause length="2"/>
+        <Say voice="woman" language="ja-jp" loop="1">
+          %{code}
+        </Say>
+        <Pause length="1"/>
+        <Say voice="woman" language="ja-jp" loop="1">
+          %{code}
+        </Say>
+        <Pause length="1"/>
+        <Say voice="woman" language="ja-jp" loop="1">
+          %{code}
+        </Say>
+      </Response>

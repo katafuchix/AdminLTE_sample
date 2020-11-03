@@ -1,0 +1,47 @@
+ja:
+  views/users/me/profiles:
+    common:
+      photo: 写真
+      basic_profile: 基本プロフィール
+      detail_profile: 詳細プロフィール
+      to_add_favorite: お気に入りに追加する
+      to_report_violation: 違反報告する
+      to_block: ブロックする
+      cancel: キャンセル
+      text_after_user_added_to_favorite: お気に入りに追加しました
+      text_before_blocking_user: ブロックします
+      text_after_blocked_user: ブロックしました
+      confirmation: よろしいですか？
+      yes: はい
+      no: いいえ
+    edit:
+      title: paters - プロフィール編集
+      header_title: プロフィール編集
+      to_edit: 編集する
+      text_after_uploaded_photo: 写真をアップロードしました
+      text_after_deleted_profile_image: プロフィール画像を削除しました
+      text_after_updated_image_role: 表示設定を変更しました
+      errors:
+        delete_profile_image: プロフィール画像を削除できませんでした
+        change_to_main_image: メイン画像に切り替えられませんでした
+    show:
+      title: paters - プロフィール詳細（相手）
+      good: いいね！
+      message_good: メッセージ付きいいね！
+      message_good_md_title: メッセージを送りましょう！
+      message_good_md_placeholder: "お相手との共通点や気になったことを伝えてみましょう!\nメッセージ付きいいね！ではポイントが消費されます"
+      message_good_md_btn: "%{point}pt使ってメッセージ付きいいね！する"
+      conguratulations: おめでとうございます
+      text_after_matched: マッチングが成立しました！
+      lets_send_a_message_soon: 早速メッセージを送ってみましょう！
+      to_close: 閉じる
+    initial_edit:
+      title: paters - プロフィール登録
+      header_title: プロフィール登録
+      description: まずはプロフィール写真や、あなた自信について登録しましょう！
+      required: 必須
+      photo: プロフィール写真
+      comment: 自己紹介(20文字以上)
+      tweet_placeholder: "今の気持ち、あいさつなど"
+      comment_placeholder: "あなたの魅力が伝わる自己紹介をできるだけ詳しく入力しよう"
+      dreem_placeholder: "将来の夢を入力"

@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      user_relation: いいね
+    attributes:
+      user_relation:
+        user_id: ユーザID
+        target_user_id: お相手
+        read: 既読
+        message: メッセージ

@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      common_notification: 共通お知らせ
+    attributes:
+      common_notification:
+        title: タイトル
+        body: お知らせ内容
+        notice_type: お知らせタイプ
+        created_at: 作成日時
+  enums:
+    common_notification:
+      notice_type:
+        normal: 通常
+        emergency: 重要
+  common_notification:
+    message:
+      created: 通知を作成しました
+      deleted: 通知を削除しました
+      updated: 通知を更新しました

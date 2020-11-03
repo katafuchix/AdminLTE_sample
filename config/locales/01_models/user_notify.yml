@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      user_notify: 通知設定
+    attributes:
+      user_notify:
+        match_push_notify: マッチングのPush通知
+        relation_push_notify: いいねのPush通知
+        message_push_notify: メッセージのPush通知
+        notification_push_notify: お知らせのPush通知
+        match_mail_notify: マッチングのメール通知
+        relation_mail_notify: いいねのメール通知
+        message_mail_notify: メッセージのメール通知
+        notification_mail_notify: お知らせのメール通知
+        visitor_push_notify: 足跡のお知らせ通知
+        visitor_mail_notify: 足跡のメール通知

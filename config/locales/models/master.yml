@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      master: マスタ
+      master/violation_category: 違反報告の種別
+      master/annual_income: 年収
+      master/drinking_habit: お酒
+      master/expect_support_money: 希望支援金額
+      master/figure: 体型
+      master/first_date_cost: 初デート費用
+      master/have_child: 子供の有無
+      master/holiday: 休日
+      master/job: 職業
+      master/marriage: 結婚
+      master/personality: 性格
+      master/request_until_meet: 出会うまでの希望
+      master/smoking_habit: タバコ
+      master/educational_background: 学歴
+      master/prefecture: 居住地
+      master/address: 居住地
+      master/birth_place: 出身地
+      master/inquiry_category: お問い合わせの種別
+      master/leaving_reason: 退会理由の種別
+
+    attributes:
+      master:
+        name: 項目
+        enabled: 表示
+        sort_order: 並び順
+      master/violation_category:
+        name: 違反箇所
+        violation_category: 違反報告の種別

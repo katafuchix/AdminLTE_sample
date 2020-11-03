@@ -1,0 +1,4 @@
+ja:
+  admin/my/basic_infos_controller:
+    update:
+      flash_success: 基本情報を更新しました

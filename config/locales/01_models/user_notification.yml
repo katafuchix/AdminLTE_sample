@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      user_notification:
+        title: お知らせタイトル
+        body: お知らせ本文
+        notice_type: お知らせタイプ
+
+  enums:
+    user_notification:
+      notice_type:
+        normal: 通常
+        emergency: 重要

@@ -1,0 +1,157 @@
+ja:
+  api:
+    success_message:
+      get: 取得しました
+      create: 作成しました
+      update: 更新しました
+      delete: 削除しました
+      user:
+        login: ログインしました
+        create: ユーザーを作成しました
+        create_step1: ユーザー情報を登録しました(Step1)
+        create_step2: ユーザー情報を登録しました(Step1)
+        create_step3: ユーザー情報を登録しました(Step2)
+        create_step4: ユーザー情報を登録しました(Step3)
+        create_step5: ユーザー情報を登録しました(Step4)
+        resent_email: 確認メールを送信しました
+        resend_sms: 認証コードを再送信しました
+        resend_call: 認証コードを再送信しました
+        verify_sms_code: 認証が完了しました
+        update:
+          device_token: デバイストークンを登録しました
+          certified_email: メール認証が完了しました
+          certified_email_notify_title: メールアドレス確認完了のお知らせ
+          certified_email_notify_message: メールアドレスの確認が完了いたしました！ボーナスとして%{point}pt進呈しましたので、ぜひご活用ください。引き続きPatersのご利用をお楽しみください。
+          notify: 通知設定が完了しました
+          registration: 登録情報を変更しました
+          confirm_email: 確認メールを送信しました、メールのリンクから変更を完了してください
+          visitor_log: 足跡設定が完了しました
+          password_reset_token: リセットパスワードトークン発行&メール送信しました
+          template: テンプレート設定が完了しました
+          memo: メモが編集されました
+          version_info: バージョン情報が編集されました
+          private:
+            enabled: プライベート機能がONになりました
+            disabled: プライベート機能がOFFになりました
+          main_image_role: メイン画像公開範囲を切り替えました
+        delete: 退会が完了しました。
+      user_profile:
+        update: プロフィールを更新しました
+        update_birthday: 生年月日を更新しました
+        update_meet_at_today: 「スグ会う」を更新しました
+      user_relation:
+        create: いいねしました！
+        skipped: いいねをスキップしました！
+      user_match:
+        create: マッチングしました！
+      user_match_message:
+        cannot_open: お相手からメッセージが届いています
+      profile_image:
+        create: プロフィール画像を登録しました
+        update: プロフィール画像を更新しました
+        update_sort: プロフィール画像を並び替えました
+        delete: プロフィール画像を削除しました
+        update_role: プロフィール画像の権限を変更しました
+      user_favorite:
+        create: お気に入りに追加しました
+        delete: お気に入りから削除しました
+      user_block:
+        create: ブロックしました
+        delete: ブロックを解除しました
+      user_violation:
+        create: 違反報告しました
+      user_display:
+        create: 非表示にしました
+        delete: 非表示を解除しました
+      user_age_certification:
+        create: 年齢確認書類を提出しました
+        certified:
+          blanked: '年齢確認書類の提出をお願いします'
+          pending: '審査中です'
+          accepted: '年齢確認が完了しました'
+          rejected: '年齢確認ができませんでした、もう一度年齢確認書類を提出してください'
+      user_income_certification:
+        create: 所得証明書類を提出しました
+        certified:
+          blanked: '所得証明書類の提出をお願いします'
+          pending: '審査中です'
+          accepted: '所得証明が完了しました'
+          rejected: '所得証明ができませんでした、もう一度所得証明書類を提出してください'
+      user_billing:
+        update: 請求情報を更新しました
+      user_purchase:
+        create: 購入処理が完了しました
+        restore: 更新処理が完了しました
+        validate_success: バリデーションに成功しました
+        point_exchange: 「%{point}」を「%{point}」に変更しました。
+      user_message_handler: メッセージを保存しました
+      invite: 招待に成功しました
+      user_message:
+        read: メッセージを既読にしました
+      user_blocked_phone:
+        create: ブロックする電話番号を登録しました
+        delete: ブロックする電話番号から削除しました
+        import_phone_numbers: '%{result}件のインポートに成功しました'
+        delete_all: ブロックしたい電話番号を全て削除しました
+
+    errors:
+      unauthentication: メールアドレス、携帯電話番号またはパスワードに誤りがあります
+      lack_request_param: "%{lack_param}が不足しています"
+      error_404: 処理の対象が存在しません
+      sex_is_nil: ユーザーの性別が設定されていません
+      same_sex: 同性のため処理できません
+      no_adult: １８歳未満のため処理できません
+      no_age_certified: 年齢確認ができていません、年齢確認書類を提出してください
+      no_normal_charging_member: 有料会員ではありません、有料会員購入してください
+      invalid_date: "存在しない日付です"
+      invalid_date_format: "日付の形式が不正です"
+      invalid_date_span: 日付の期間が不正です
+      invalid_message: メッセージにメールアドレス、電話番号やIDを含めることはできません
+      invalid_first_message: １通目のメッセージで写真を送信することはできません
+      invalid: 不正なパラメータです
+      lack_params: パラメーターが不足しています
+      email_not_exist: emailが存在しません
+      email_or_mobile_phone_not_exist: emailまたは電話番号が存在しません
+      user_not_exist: ユーザーが存在しません
+      user_profile:
+        limit: "上限%{limit}枚を超えています"
+      profile_image:
+        update_role: メイン画像の権限は変更できません
+      invalid_image_min_width: "%{limit}ピクセル以上の画像をアップロードしてください"
+      invalid_image_min_height: "%{limit}ピクセル以上の画像をアップロードしてください"
+      invalid_image_max_filesize: "%{limit}MBより小さい画像をアップロードしてください"
+      purchase:
+        valid_ok: 購入が完了しました
+        invalid_charging: 女性会員は有料会員購入できません
+        invalid_payment_type: リクエストの購入タイプが誤っています
+        invalid_other: 購入できません
+        invalid_receipt: レシートの検証エラーです
+        invalid_product_id: プロダクトIDエラーです
+        invalid_point: 年齢未認証のためポイント購入できません
+        invalid_used_receipt: 既に使用されたレシートです
+        invalid_payment_member_transaction: 会員処理は既に実行済みです
+        not_age_certified: 年齢確認が必要です
+        invalid_premium: プレミアム会員購入するためには有料会員購入をする必要があります
+      use_point: patersポイント残高が不足しています
+      relation_point: いいねポイントが不足しています
+      relation_completed_registration: 登録処理が完了しているため実行できません
+      no_charging_member_too_message: メッセージを送信するには有料会員になる必要があります。
+      deactivate:
+        violation: 違反報告のため、このアカウントを停止しました
+      invalid_blood_id: 血液型が不正です
+      invalid_sms_verification_code: の認証に失敗しました
+      already_sms_verified: は既にSMS認証済みのため、認証コードを再送信できません
+      already_sms_self_verified: は既にあなたによって認証済みです
+      already_registered_number: "%{number}は既に登録されています"
+      invite:
+        not_mail_confirmed: 招待にはメール認証が必要です
+        invite_not_found: 報酬付与に失敗しました
+        not_generate_code: 招待コードが作成されていません
+        invalid_code: 招待コードが正しくありません
+        still_rewarded: 既に招待コード入力済みです
+        used_code: この招待コードは使用済みです
+        self_code: 自分の招待コードは入力できません
+      target_already_unsubscribed: 'お相手は既に退会済です'
+      failed_to_send_sms: SMSの送信に失敗しました
+      no_upload_user_age_certification: '年齢確認書類をアップロードできませんでした'
+      blocked: お相手はすでにブロックしています

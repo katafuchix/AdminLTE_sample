@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      admin/user_notify: 管理者通知設定
+    attributes:
+      admin/user_notify:
+        user_certification_notify: 年齢確認書類が提出されたとき
+        profile_image_notify: プロフィール画像が提出されたとき
+        user_profile_notify: ユーザプロフィール項目が提出されたとき
+        inquiry_notify: お問い合わせが届いたとき

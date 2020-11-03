@@ -1,0 +1,4 @@
+ja:
+  users/profiles_controller:
+    create:
+      flash_success: プロフィールを登録しました

@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      user_blocked_phone: 電話番号ブロック
+    attributes:
+      user_blocked_phone:
+        user_id: ユーザーID
+        phone_number: 電話番号
+    errors:
+      messages:
+        unable_to_block_self_phone_number: 自分の電話番号はブロックできません

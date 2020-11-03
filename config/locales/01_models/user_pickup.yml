@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      user_pickup: ピックアップ
+    attributes:
+      user_pickup:
+        user_id: ユーザID
+        target_user_id: お相手

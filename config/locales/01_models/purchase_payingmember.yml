@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      purchase_payingmember: 会員購入
+    attributes:
+      purchase_payingmember:
+        product_id_str: iTunesConnect ProductId
+        name: 名前
+        price: 価格
+        term: 期間
+        is_premium: プレミアム会員
+        sort_order: 並び順

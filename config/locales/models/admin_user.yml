@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      admin/user: 管理ユーザ
+    attributes:
+      admin/user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        role: 役割
+    enums:
+      admin/user:
+        role:
+          operator: operator
+          admin: admin
+  admin_user:
+    message:
+      created: 管理ユーザを作成しました
+      deleted: 管理ユーザを削除しました
+      updated: 管理ユーザを更新しました

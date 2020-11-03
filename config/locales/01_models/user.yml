@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      user: 会員
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        mobile_phone: 携帯電話番号
+        unconfirmed_mobile_phone: 携帯電話番号
+        remain_relation_count: 残いいね!
+        search_status: 検索表示ステータス
+        login: メールアドレスまたは携帯電話番号

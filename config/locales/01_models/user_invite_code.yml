@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      user_invite_code: 会員
+    attributes:
+      user_invite_code:
+        invite_code: 招待コード
+        used: 使用状況
+        invited_user_id: 招待されたユーザーID

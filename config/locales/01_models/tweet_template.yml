@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      tweet_template: つぶやきテンプレート
+    attributes:
+      tweet_template:
+        name: テンプレート名
+        sex: 対象性別
+        tweet: つぶやき
+        sort_order: 表示順
+  enums:
+    tweet_template:
+      sex:
+        both: 両方
+        male: 男性
+        female: 女性
+  tweet_template:
+    message:
+      created: 新規つぶやきテンプレートを作成しました
+      deleted: つぶやきテンプレートを削除しました
+      updated: つぶやきテンプレートを更新しました

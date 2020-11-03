@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      user_age_certification: 年齢確認
+    attributes:
+      user_age_certification:
+        user_id: ユーザーID
+        document_image: 年齢認証書類
+        certified: 認証済みフラグ
+        accepted: 承認済
+        rejected: 拒否済
+        pending: 審査中
+        confirmed: 確認済
+        confirmed_at: 確認日
+        updated_at: 更新日
+        document_image_rejected_reason: 非承認理由

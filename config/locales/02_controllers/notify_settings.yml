@@ -1,0 +1,4 @@
+ja:
+  admin/my/notify_settings_controller:
+    update:
+      flash_success: 通知設定を更新しました

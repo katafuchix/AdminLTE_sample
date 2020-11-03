@@ -1,0 +1,23 @@
+ja:
+  views/users/invitations:
+    new:
+      return_link: 各種設定
+      heading1: patersをご友人にお勧めしよう！
+      heading2_html: 1,400円分(10pt)</br>ポイントプレゼント！！
+      heading3: 友達紹介キャンペーン
+      heading4_html: |-
+        ご友人がpaters新規登録後に招待ページから<br>
+        あたなの招待コードを入れるとあなたにも、<br>
+        ご友人も1,400円分(10pt)のポイント贈呈。
+      detail1: ・招待したご友人が、paters新規登録後、招待コードを利用すると、あなたにもご友人にも1,400円分(10pt)のポイントを贈呈いたします。
+      detail2: ・ポイントは「1pt = 1いいね！」に交換でき、気になるお相手に「いいね！」を送ることができます。
+      detail3: patersご優待カードまたは招待コードをお持ちの方は、該当のシリアルコードまたはご優待コードを下記に入力してください。
+      heading_invite: 招待コードを利用する
+      code_placeholder: ここに招待コードをご入力ください
+      copy: コピー
+      submit: 送信
+      coution1: ・招待コードは、1回のみのご利用となります。
+      coution2: ・友人招待キャンペーンにて不正行為が発覚した場合は即時退会処理となりますので、ご注意ください。
+      copy_message: コピーしました。
+      invite_message: 招待に成功しました。
+      invite_friend: ご友人を招待

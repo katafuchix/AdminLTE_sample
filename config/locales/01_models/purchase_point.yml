@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      purchase_point: ポイント購入
+    attributes:
+      purchase_point:
+        product_id_str: iTunesConnect ProductId
+        name: 名前
+        price: 価格
+        point: ポイント数
+        sort_order: 並び順

@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      user_ios_purchase_history: iOS購入履歴
+    attributes:
+      user_ios_purchase_history:
+        user_id: 会員
+    errors:
+      user_ios_purchase_history:
+        invalid_used_receipt: は既にこのレシートを使用済みです

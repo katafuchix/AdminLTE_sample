@@ -1,0 +1,13 @@
+app:
+  url: http://localhost:3000
+api_error_code:
+  unauthenticated: 1
+  lack_request_param: 2
+  invalid: 3
+  db_transaction: 4
+  error404: 5
+  error500: 6
+  denied: 7
+
+<%= File.read(File.join(File.dirname( __FILE__ ), 'config/controllers.yml')) %>
+<%= File.read(File.join(File.dirname( __FILE__ ), 'config/models.yml')) %>

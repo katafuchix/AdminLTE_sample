@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      profile_image: プロフ画像
+    attributes:
+      profile_image:
+        image: プロフィール写真
+        certified: 認証済みフラグ
+        accepted: 承認済
+        rejected: 拒否済
+        pending: 審査中
+        confirmed: 確認済
+        image_rejected_reason: 非承認理由
+        image_role: 画像権限
+  profile_image:
+    message:
+      deleted: プロフィール画像を非承認にしました

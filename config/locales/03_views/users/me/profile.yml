@@ -1,0 +1,17 @@
+ja:
+  views/users/me/profile:
+    common:
+      title: 'paters - %{attribute}'
+      submit_save: 保存
+      text_max_length: '最大%{text_max_length}文字'
+  views/users/me/profile/profile_images:
+    denied: 否認
+    pending: 審査中
+    update_role: 表示設定
+    to_edit: 編集する
+    to_delete: 削除する
+    image_role:
+      show_public: 常に非公開
+      relation_user_only: いいねしたお相手のみ公開
+      matching_user_only: マッチングしたお相手のみ公開
+      show_private: 常に非公開

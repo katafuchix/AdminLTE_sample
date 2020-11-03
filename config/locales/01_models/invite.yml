@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      invite: 招待
+    attributes:
+      invite:
+        start_at: 開始日
+        end_at: 終了日
+        caption: 説明
+        banner_image: バナー画像
+        mail_title: メールタイトル
+        mail_body: メール本文
+        privilege_type: 特典タイプ
+        inviting_reward_point: 招待する側報酬ポイント
+        invited_reward_point: 招待される側報酬ポイント
+  enums:
+    invite:
+      privilege_type:
+        add_point: ポイント付与

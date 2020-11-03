@@ -1,0 +1,90 @@
+ja:
+  slack_notification:
+    footer:
+      name: 'Paters 管理システム'
+      icon: 'https://paters.jp/favicon.ico'
+    dev:
+      channel: '#paters_dev_notify'
+    saved_inspection:
+      channel: '#paters_operation'
+      username: '審査待ち画像に関する通知'
+      icon_emoji: ':incoming_envelope:'
+      pretext: '<!channel> 審査待ちの%{target}が%{count}件溜まっています。'
+      author_name: 'Detail'
+      title: '審査判定はこちらから'
+      color: '#36a64f'
+    notify_to_cs_channel:
+      channel: '#paters_cs_notify'
+      username: '%{env} %{target}が届きました'
+      icon_emoji: ':envelope_with_arrow:'
+      author_name: 'Detail'
+      title: '%{target}の確認はこちらから'
+      color: 'warning'
+    submitted:
+      channel: '#paters_operation'
+      profile_image:
+        username: '%{env} プロフィール画像申請通知'
+        icon_emoji: ':camera:'
+        pretext: 'プロフィール画像が提出されました。'
+        author_name: 'Details'
+        title: 'プロフィール画像の審査判定はこちらから'
+        color: '#36a64f'
+        fields:
+          title: '提出した会員'
+          value: '%{user_name}さん（user_id: <%{user_url}|%{user_id}>）'
+      user_age_certification:
+        username: '%{env} 年齢確認書類申請通知'
+        icon_emoji: ':inbox_tray:'
+        pretext: '年齢確認書類が提出されました。'
+        author_name: 'Details'
+        title: '年齢確認書類の審査判定はこちらから'
+        color: '#36a64f'
+        fields:
+          title: '提出した会員'
+          value: '%{user_name}さん（user_id: <%{user_url}|%{user_id}>）'
+      user_income_certification:
+        username: '%{env} 所得証明書類申請通知'
+        icon_emoji: ':inbox_tray:'
+        pretext: '所得証明書類が提出されました。'
+        author_name: 'Details'
+        title: '所得証明書類の審査判定はこちらから'
+        color: '#36a64f'
+        fields:
+          title: '提出した会員'
+          value: '%{user_name}さん（user_id: <%{user_url}|%{user_id}>）'
+      user_profile:
+        username: '%{env} プロフィール項目申請通知'
+        icon_emoji: ':memo:'
+        pretext: 'プロフィール項目（%{item_name}）が提出されました。'
+        author_name: 'Details'
+        title: 'プロフィール項目（%{item_name}）の審査の判定はこちらから'
+        color: '#36a64f'
+        fields:
+          title: '提出した会員'
+          value: '%{user_name}さん（user_id: <%{user_url}|%{user_id}>）'
+    report:
+      channel: '#paters_marketing'
+      username: '【KPI進捗報告】%{title}'
+      icon_emoji: ':couple:'
+      matching_icon_emoji: ':couple_with_heart:'
+      withdrawal_icon_emoji: ':broken_heart:'
+      pretext: '%{date}'
+      author_name: 集計結果
+      color: '#93B8CA'
+      title:
+        fresh_male_normal_charging_user_count: 男性新規有料会員入会者数
+        fresh_male_user_count: 男性新規登録者数
+        fresh_female_user_count: 女性新規登録者数
+        fresh_matching_count: 新規マッチング数
+        withdrawal_male_normal_charging_user_count: 男性有料会員退会者数
+        withdrawal_male_user_count: 男性会員退会者数
+        withdrawal_female_user_count: 女性会員退会者数
+      fields:
+        fresh_male_normal_charging_user_count: 男性新規有料会員入会者数
+        fresh_male_user_count: 男性新規登録者数
+        fresh_female_user_count: 女性新規登録者数
+        fresh_matching_count: 新規マッチング数
+        withdrawal_male_normal_charging_user_count: 男性有料会員退会者数
+        withdrawal_male_user_count: 男性会員退会者数
+        withdrawal_female_user_count: 女性会員退会者数
+        value: "%{count}人 （前日比：%{percent}% %{emoji}）"

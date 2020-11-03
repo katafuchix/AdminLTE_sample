@@ -1,0 +1,29 @@
+ja:
+  activerecord:
+    models:
+      purchase_payingmember_campaign: 会員購入キャンペーン
+    attributes:
+      purchase_payingmember_campaign:
+        purchase_payingmember_id: 会員購入マスタ
+        name: 名前
+        campaign_type: キャンペーンタイプ
+        sex: 対象性別
+        contact_type: 対象契約
+        value: 値
+        start_at: 開始日時
+        end_at: 終了日時
+        enabled: 有効 / 無効
+        sort_order: 並び順
+  enums:
+    purchase_payingmember_campaign:
+      campaign_type:
+        pater_point: patersポイント
+        relation_point: いいねポイント
+      sex:
+        male: 男性
+        female: 女性
+        both: 両方
+      contact_type:
+        new_or_continue: 新規&継続
+        new_only: 新規のみ
+        continue_only: 継続のみ

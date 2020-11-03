@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      user_template: テンプレート
+    attributes:
+      user_template:
+        name: テンプレート名
+        background_image: 背景画像

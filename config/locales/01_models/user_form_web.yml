@@ -1,0 +1,17 @@
+ja:
+  activemodel:
+    models:
+      user_form_web: 会員
+    attributes:
+      user_form_web:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        name: 名前
+        birthday: 生年月日
+        sex: 性別
+        invite_code: 招待コード
+        mobile_phone: 携帯電話番号
+        unconfirmed_mobile_phone: 携帯電話番号
+        sms_verification_code: 認証コード
+        prof_address_id: 居住地

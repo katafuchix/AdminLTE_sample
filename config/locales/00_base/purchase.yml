@@ -1,0 +1,7 @@
+ja:
+  purchases:
+    success: 購入しました
+    error: 購入に失敗しました
+    not_found_product_id: 購入対象が存在しません
+    still_member: 既に会員登録済みです
+    regist_creditcard: クレジットカードを登録しました

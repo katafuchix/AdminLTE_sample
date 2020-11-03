@@ -1,0 +1,24 @@
+ja:
+  invite:
+    message: "招待メッセージです(仮) 招待コード:%{invite_code}"
+  admin_issued_invite_codes:
+    button:
+      create_normal: 招待コードを登録する
+      create_preferentail: 優待招待コードを登録する
+    message:
+      created: 招待コードを作成しました
+      deleted: 招待コードを削除しました
+      updated: 招待コードを更新しました
+      blank: 招待コードはありません。
+      point50: 50いいねポイントを付与しました。
+      point100: 100いいねポイントを付与しました。
+      normal_payingmember3days: 有料会員を3日間有効にしました。
+      normal_payingmember7days: 有料会員を7日間有効にしました。
+      normal_payingmember1month: 有料会員を1ヶ月間有効にしました。
+    error:
+      blank_create_num: 作成数を入力して下さい
+      blank_serial_num: 優待コード番号は7桁以上の数字で入力して下さい
+      invalid_serial_num: 番号の指定範囲が不正です
+      used_code: この招待コードは既に使用されています。
+      age_certification: 実行前に年齢確認書類の提出をお願いいたします。
+      still_normal_payingmember: 既に有料会員です。

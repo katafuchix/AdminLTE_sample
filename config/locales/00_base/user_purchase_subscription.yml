@@ -1,0 +1,6 @@
+ja:
+  user_purchase_subscription:
+    update:
+      enabled:
+        "true": 定期課金を再開しました
+        "false": 定期課金をキャンセルしました

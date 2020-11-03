@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      user_point_payment: ポイント購入
+    attributes:
+      user_point_payment:
+        end_at: 期限日
+        process_type: 購入/消費
+        remain_point: 残ポイント
+        point: ポイント
+        enabled: 有効/無効
+        process_date: 実行日
+  enums:
+    user_point_payment:
+      process_type:
+        added: ポイント購入
+        used: ポイント消費
+      point_type:
+        purchase: ポイント購入
+        subscription_bonus: 会員購入ボーナス
+        login_bonus: ログインボーナス
+        email_confirmed: メール認証ボーナス
+        registration_bonus: 登録ボーナス

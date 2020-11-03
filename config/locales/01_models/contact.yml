@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      contact: お問い合わせ
+    attributes:
+      contact:
+        created_at: 日時
+        name: お名前
+        hurigana: フリガナ
+        company: 会社名
+        category: お問い合わせの種類
+        email: メールアドレス
+        phone: 電話番号
+        body: お問い合わせ内容
+        agreement: 個人情報の取り扱い
+    errors:
+      messages:
+        agreement: に同意して下さい

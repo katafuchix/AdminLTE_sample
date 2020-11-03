@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      user_match_message:
+        user_match_id: ユーザーマッチID
+        message: メッセージ
+        image: 画像
+
+  user_match_message:
+    message:
+      deleted: メッセージを削除しました
+      updated: メッセージを更新しました
+      invalid_user_ids: 送信者と受信者を正しく入力してください
+      photo_sent: 写真を送信しました

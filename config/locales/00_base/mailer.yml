@@ -1,0 +1,265 @@
+ja:
+  header:
+    greeting: |-
+      こんにちは！
+      マッチングアプリ「paters」(ペイターズ) 運営事務局です。
+    personal_greeting: |-
+      %{name}様、こんにちは！
+      マッチングアプリ「paters」(ペイターズ) 運営事務局です。
+  footer: |-
+    ・‥…─*・‥…─*・‥…─*・‥…─*・‥…─*・‥…─*・‥…─*
+    マッチングアプリ「paters」(ペイターズ) 」運営事務局
+    https://paters.jp
+    info@paters.jp  (お問い合わせはこちらのメールにお願い致します)
+    ※こちらは配信専用のメールアドレスです。配信停止希望の方は、アプリの設定▶通知設定からメールの配信を停止することが可能です。
+    ※このメールに書かれた内容の無断転載、無断複製を禁じます。
+    ・‥…─*・‥…─*・‥…─*・‥…─*・‥…─*・‥…─*・‥…─*
+  admin:
+    header: マッチングアプリ「paters」(ペイターズ) 管理システムです。
+    footer: ※ paters管理システムから自動送信されています。
+  push:
+    not_defined: Push通知が定義されていません [%{i18n_key}]
+  purchase_mailer:
+    become_payingmember:
+      subject: '【patersからお知らせ】 有料会員へのご登録ありがとうございます！'
+    become_premium_payingmember:
+      subject: '【patersからお知らせ】 プレミアム会員へのご登録ありがとうございます！'
+      mailer:
+        body: |
+          プレミアム会員になりました！
+          引き続きpatersをどうぞよろしくお願い致します。
+          patersでは、良質なコミュニティをすべての会員様に提供していくよう努めて参りますので、引き続きご理解のほどお願いできますと幸いです。
+          素敵な出会いがありますように…！
+    purchase_point:
+      subject: '【patersからお知らせ】 ポイントのご購入ありがとうございます!'
+  reset_password_mailer:
+    reset_token:
+      subject: '【patersからお知らせ】 パスワードのリセットトークン発行メール'
+  common_notification_mailer:
+    create:
+      subject: '【patersからお知らせ】 patersから新しいお知らせがあります!'
+  user_notification_mailer:
+    create:
+      subject: '【patersからお知らせ】 新しいお知らせがあります!'
+      push:
+        alert: 新しいお知らせがきました！
+      push_link: paters://notifications
+    certified:
+      push:
+        profile:
+          comment: 審査中のプロフィール（コメント）が承認されました！
+          job_name: 審査中のプロフィール（お仕事）が承認されました！
+          dream: 審査中のプロフィール（将来の夢）が承認されました！
+          hobby: 審査中のプロフィール（学校）が承認されました！
+          school_name: 審査中のプロフィール（学校）が承認されました！
+          tweet: 審査中のプロフィール（一言コメント）が承認されました！
+        profile_image:
+          image: 審査中のプロフィール画像が承認されました！
+        age_certification:
+          document_image: 年齢確認が完了しました！お相手にメッセージを送信できるようになります。
+        income_certification:
+          document_image: 所得証明が完了しました！
+      push_link:
+        profile:
+          comment: paters://notifications-detail/%{id}
+          job_name: paters://notifications-detail/%{id}
+          dream: paters://notifications-detail/%{id}
+          hobby: paters://notifications-detail/%{id}
+          school_name: paters://notifications-detail/%{id}
+          tweet: paters://notifications-detail/%{id}
+        profile_image:
+          image: paters://notifications-detail/%{id}
+        age_certification:
+          document_image: paters://notifications-detail/%{id}
+        income_certification:
+          document_image: paters://notifications-detail/%{id}
+    notify_female_users:
+      push: patersに新しい男性会員(%{name}さん %{address} %{age}歳)が登録されました！アプローチするなら今がチャンスです。今すぐチェック！
+      push_link: paters://userprofile/%{id}
+    notify_visitor:
+      push: お相手から足あとがつきました。
+      push_link: paters://footprint
+    rejected:
+      push:
+        profile_image:
+          image: プロフィール画像が承認されませんでした。詳しくはアプリ内のダッシュボード>お知らせからご覧ください。
+        age_certification:
+          document_image: 年齢確認が承認されませんでした。詳しくはアプリ内のダッシュボード>お知らせからご覧ください。
+        income_certification:
+          document_image: 所得証明が承認されませんでした。詳しくはアプリ内のダッシュボード>お知らせからご覧ください。
+      push_link:
+        profile_image:
+          image: paters://notifications-detail/%{id}
+        age_certification:
+          document_image: paters://notifications-detail/%{id}
+        income_certification:
+          document_image: paters://notifications-detail/%{id}
+  user_profile_mailer:
+    accepted:
+      subject: '【patersからお知らせ】 プロフィールの内容が承認されました!'
+  profile_image_mailer:
+    accepted:
+      subject: '【patersからお知らせ】 プロフィール画像が承認されました!'
+      mailer:
+        body: |
+          プロフィール画像が承認されました！
+          続けてサブ写真やプロフィール項目を登録してみましょう！
+          素敵な出会いがありますように…！
+    rejected:
+      subject: '【patersからお知らせ】 プロフィール画像が承認できませんでした！'
+  user_age_certification_mailer:
+    accepted:
+      subject: '【patersからお知らせ】 年齢確認が完了しました!'
+      mailer:
+        body: |
+          年齢確認が完了しました！
+          さっそく気になるお相手にいいねやメッセージをしてみましょう！
+          素敵な出会いがありますように…！
+    rejected:
+      subject: '【patersからお知らせ】 年齢確認ができませんでした。'
+      mailer:
+        body: |
+          残念ながら年齢確認ができませんでした。
+          年齢確認書類は「運転免許証」「パスポート」および「健康保険証」のみ受け付けております。
+          書類名称、発行元の名称、生年月日が見える形で再度お写真の提出をお願い致します。
+  user_income_certification_mailer:
+    accepted:
+      subject: '【patersからお知らせ】 所得証明確認が完了しました!'
+      mailer:
+        body: |
+          所得証明書が承認されました！
+
+          patersでは、良質なコミュニティをすべての会員様に提供をしていくよう務めて参りますので、
+          引き続きご理解のほどお願いできますと幸いです。
+          素敵な出会いがありますように...！
+    rejected:
+      subject: '【patersからお知らせ】 所得証明確認ができませんでした。'
+      mailer:
+        body: |
+          残念ながら所得証明書のご提出が完了できませんでした。
+          所得証明書類は「前年度の源泉徴収票」「前年度の確定申告書」「前年度の納税証明書」のみ受け付けております。
+          「証明書発行元」「書類発行年月日」「年収」「お名前」が見える形で再度お写真の提出をお願い致します。
+
+  user_relation_mailer:
+    create:
+      subject: '【patersからお知らせ】 お相手からいいねが届きました!'
+      mailer:
+        body: |
+          お相手からいいねが届きました！
+          今すぐアプリをひらいて「いいね！」してみましょう！
+          素敵な出会いがありますように…！
+      push:
+        body: お相手からいいねされました！
+      push_link:
+        body: paters://incomming-relation
+  user_match_mailer:
+    create:
+      subject: '【patersからお知らせ】 お相手とマッチングしました!'
+      mailer:
+        body: |
+          いいねしたお相手とマッチングしました！
+          さっそくメッセージを送ってみましょう！
+          素敵な出会いがありますように…！
+      push:
+        body: お相手とマッチングしました！
+      push_link:
+        body: paters://messages
+  user_match_message_mailer:
+    create:
+      subject: '【patersからお知らせ】 お相手からメッセージが届きました!'
+      mailer:
+        body: |
+          お相手からメッセージが届きました！
+          さっそくメッセージを送ってみましょう！
+          素敵な出会いがありますように…！
+      push:
+        body: お相手からメッセージが届きました！
+      push_link:
+        body: paters://messages
+  user_visitor_mailer:
+    create:
+      subject: '【patersからお知らせ】 お相手から足あとがつきました!'
+      mailer:
+        body: |
+          お相手から足あとがつきました！
+          今すぐアプリをひらいて確認してみよう！
+          素敵な出会いがありますように…！
+  admin/submitted_notification_mailer:
+    profile_image:
+      subject: 'プロフィール写真が %{name} さんから提出されました。'
+    user_age_certification:
+      subject: '年齢確認書類が %{name} さんから提出されました。'
+    user_income_certification:
+      subject: '所得証明書類が %{name} さんから提出されました。'
+    user_profile:
+      subject: 'プロフィール項目が %{name} さんから提出されました。'
+  admin/inquiry_notification_mailer:
+    received:
+      subject: '【paters管理システム】 お問い合わせが届きました'
+  user_leaving_mailer:
+    create:
+      subject: 'お問い合わせいただいた件につきまして【paters 退会処理】'
+      forced_subject: '強制退会について【paters 退会処理】'
+      message: |
+        %{username}様
+
+        こんにちは、paters運営事務局です。
+        いつもpatersをご利用いただき、誠にありがとうございます。
+        また、この度はお問い合わせいただきありがとうございます。
+        お問い合わせいただいた内容につきまして、
+        先ほど、退会処理を完了させていただきました。
+        退会後は、しばらく再登録ができませんのでご了承くださいませ。
+        この度は、patersをご利用いただき誠にありがとうございました。
+        その他、ご不明な点やご質問、ご意見等ございます際にはお気軽にご連絡いただけますと幸いです。
+        以上となりますが、引き続きpatersをどうぞよろしくお願いいたします。
+        --
+      forced_message: |
+        %{username}様
+
+        こんにちは、paters運営事務局です。
+        いつもpatersをご利用いただき、誠にありがとうございます。
+
+        この度、patersのご利用について複数の会員様より、
+        一通目のメッセージにてLINEのIDを送信されているとの
+        違反報告がありました為ご連絡をさせていただきました。
+
+        運営事務局にて事実確認が取れましたので
+        大変恐縮ではございますが、強制退会とさせていただきます。
+        何卒ご了承頂けますと幸いです。
+
+        patersでは、ユーザーの皆様に快適にアプリをお使いいただけるよう、
+        また、良質なコミュニティをすべての会員様に提供をしていくよう務めて参りますので、
+        ご理解ほどお願いできますと幸いです。
+
+        その他ご不明な点等ございます際にはお気軽にご連絡くださいませ。
+        以上となりますが、どうぞよろしくお願いいたします。
+  user_violation_mailer:
+    create:
+      subject: 'いただきました違反報告につきまして【paters】'
+      message: |
+        %{username}様
+
+        こんにちは、paters運営事務局です。
+        いつもpatersをご利用いただき、誠にありがとうございます。
+        また、この度は違反報告へのお知らせをいただき誠にありがとうございました。
+
+        違反報告内容を、運営事務局の方で確認させていただき、
+        運営事務局より報告いただきましたユーザー様へ厳重注意をさせていただきました。
+
+        この度はご迷惑をおかけし不快な思いをさせてしまいましたこと、
+        お詫び申し上げいたします。誠に申し訳ございませんでした。
+
+        patersでは良質なコミュニティをすべての会員様に提供をしていくよう務めて参りますので、
+        引き続きご理解ご協力のほどお願いできますと幸いです。
+
+        その他ご不明な点等ございます際にはお気軽にご連絡くださいませ。
+        以上となりますが、引き続きpatersをどうぞよろしくお願いいたします
+  meet_notification_mailer:
+    clear:
+      subject: 【patersからお知らせ】今日会える設定がリセットされました！
+      mailer:
+        body: |
+          今日会える設定がリセットされました。
+          再度予定を登録してお相手と直ぐにお会いしてみましょう。
+      push:
+        body: 今日会える設定がリセットされました。再度予定を登録してお相手と直ぐにお会いしてみましょう。

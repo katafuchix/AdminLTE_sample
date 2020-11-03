@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      daily_report: デイリーレポート
+    attributes:
+      daily_report:
+        fresh_male_user_count: 男性登録者数(累計)
+        fresh_female_user_count: 女性登録者数(累計)
+        fresh_matching_count: マッチング数(累計)
+        fresh_male_normal_charging_user_count: 男性有料会員数(累計)
+        withdrawal_male_normal_charging_user_count: 男性有料会員退会者数(累計)
+        withdrawal_male_user_count: 男性会員退会者数(累計)
+        withdrawal_female_user_count: 女性会員退会者数(累計)
+        fresh_male_user_count_diff: 新規男性登録者数
+        fresh_female_user_count_diff: 新規女性登録者数
+        fresh_matching_count_diff: 新規マッチング数
+        fresh_male_normal_charging_user_count_diff: 新規男性有料会員数
+        withdrawal_male_normal_charging_user_count_diff: 新規男性有料会員退会者数
+        withdrawal_male_user_count_diff: 新規男性会員退会者数
+        withdrawal_female_user_count_diff: 新規女性会員退会者数

@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      user_match: マッチング
+    attributes:
+      user_match:
+        user_id: ユーザーID
+        target_user_id: お相手のID
+        room_id: ルームID
+        created_at: 作成日時
+  user_match:
+    message:
+      created: マッチングを作成しました
+      deleted: マッチングを削除しました
+      updated: マッチングを更新しました
+    title:
+      show:
+        main: メッセージ（マッチング詳細）
