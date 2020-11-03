@@ -86,14 +86,11 @@
         <!-- /.sidebar -->
       </aside>
 
-      <script>
-      $(function () {
-        console.log('aaa');
-        console.log( $('ul.nav-sidebar a') );
-        var url = window.location;
-        console.log(url);
-        $('ul.nav-sidebar a').filter(function() {
-              return this.href == url || url.href.indexOf(this.href) == 0;
-        }).addClass('active');
-      });
-      </script>
+<script>
+$(function () {
+  var url = window.location;
+  $('ul.nav-sidebar a').filter(function() {
+        return this.href == url || url.href.indexOf(this.href) == 0;
+  }).addClass('active');
+});
+</script>

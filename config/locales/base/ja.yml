@@ -142,13 +142,13 @@ ja:
     label:
       age: 歳
     submit:
-      create: 登録する
-      submit: 保存する
-      update: 更新する
-      destroy: 削除する
-      add: 追加する
+      create: 登録
+      submit: 保存
+      update: 更新
+      destroy: 削除
+      add: 追加
       back: 戻る
-      search: 検索する
+      search: 検索
       clear: クリア
       login: ログイン
   number:

@@ -14,3 +14,6 @@ require("turbolinks").start()
 // const imagePath = (name) => images(name, true)
 require('jquery')
 require("admin-lte")
+
+global.toastr = require("toastr")
+import "../stylesheets/application"

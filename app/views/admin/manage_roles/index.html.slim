@@ -30,5 +30,5 @@
                 = link_to action: :edit, id: p.id do
                   button.btn.btn-success = I18n.t('helpers.submit.update')
           td
-            = link_to '削除', admin_admin_user_path(p.id), method: :delete, data: {remote: true, confirm: "削除してもよろしいですか？"}, class: 'btn btn-danger'
+            = link_to I18n.t('helpers.submit.destroy'), admin_admin_user_path(p.id), method: :delete, data: {remote: true, confirm: "削除してもよろしいですか？"}, class: 'btn btn-danger'
 = button_to I18n.t('helpers.submit.add'), new_admin_admin_user_path, class:'btn btn-success', method: :get

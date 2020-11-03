@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'index#index'
     get 'index' => 'index#index'
-    resources :admin_users, controller: :manage_roles
+    resources :admin_users, controller: :manage_roles #, only: [:index, :new, :create, :edit, :update, :destory] 
   end
 end

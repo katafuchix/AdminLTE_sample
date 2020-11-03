@@ -15,7 +15,6 @@
 
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-
       <!-- Navbar -->
       <%= render 'admin/layouts/navbar' %>
       <!-- /.navbar -->
@@ -27,6 +26,7 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <%= yield %>
+        <%= toastr_flash %>
       </div>
       <!-- /.content-wrapper -->
 
