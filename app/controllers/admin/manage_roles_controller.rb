@@ -7,12 +7,12 @@ module Admin
     def index
       @page = params[:page] || 1
       @admin_users = Admin::User.all.page(@page).per(Settings.paging_per.manage_roles.list)
-      render file: 'admin/manage_roles/index'
+      render template: 'admin/manage_roles/index'
     end
 
     def new
       @admin_user = Admin::User.new
-      render file: 'admin/manage_roles/form'
+      render template: 'admin/manage_roles/form'
     end
 
     def create
@@ -21,7 +21,7 @@ module Admin
     end
 
     def edit
-      render file: 'admin/manage_roles/form'
+      render template: 'admin/manage_roles/form'
     end
 
     def update
@@ -55,7 +55,7 @@ module Admin
 
     def failure_message
       flash.now[:alert] = @admin_user.errors.full_messages.join('<br/>').html_safe
-      render file: 'admin/manage_roles/form'
+      render template: 'admin/manage_roles/form'
     end
   end
 end

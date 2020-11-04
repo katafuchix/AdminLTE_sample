@@ -35,9 +35,9 @@ model = Object.const_get('Admin::User')
           <!-- /.card-header -->
 
           <section class="content">
-
           <% url_for_upsert = @admin_user.persisted? ? admin_admin_user_path : admin_admin_users_path %>
-          <%= form_with(model: @admin_user, url: url_for_upsert, local: true) do |form| %>
+          <% action = @admin_user.persisted? ? :update : :create %>
+          <%= form_with(model: @admin_user, :url => {:action => action} , local: true) do |form| %>
 
           <!-- <% if @admin_user.errors.any? %>
             <div id="error_explanation">
