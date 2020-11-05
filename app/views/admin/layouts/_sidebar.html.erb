@@ -2,25 +2,21 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="#" class="brand-link">
+        <%= link_to admin_index_path, class:"brand-link" do %>
           <img src="<%= image_path 'AdminLTELogo.png' %>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                style="opacity: .8">
           <span class="brand-text font-weight-light">AdminLTE 3</span>
-        </a>
+        <% end %>
 
         <!-- Sidebar -->
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
-          <!--
+
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-              <img src="<%= image_path 'user2-160x160.jpg' %>" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-              <a href="#" class="d-block">Alexander Pierce</a>
+            <div class="info bg-gray-dark">
+              <%= current_admin_user.name %>
             </div>
           </div>
-          -->
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -29,38 +25,24 @@
                    with font-awesome or any other icon font library -->
               <li class="nav-item has-treeview"> <!-- menu-open -->
                 <a href="#" class="nav-link"> <!-- active -->
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-th"></i>
                   <p>
-                    Starter Pages
+                    Master
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Active Page</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Inactive Page</p>
-                    </a>
-                  </li>
-                  <!--
-                  <li class="nav-item">
-                    <%= link_to admin_admin_users_path, class:"nav-link" do %>
-                      <i class="nav-icon fas fa-th"></i>
-                      <p>
-                        管理者
-                      </p>
-                    <% end %>
-                  </li>
-                  -->
+                  <% Master.master_routes.each do |key, value| %>
+                    <li class="nav-item">
+                      <%= link_to key, class:"nav-link" do %>
+                        <i class="far fa-circle nav-icon"></i>
+                        <p><%= value %></p>
+                      <% end %>
+                    </li>
+                  <% end %>
                 </ul>
               </li>
-
+              <!--
               <li class="nav-item">
                 <%= link_to admin_index_path, class:"nav-link" do %>
                   <i class="nav-icon fas fa-th"></i>
@@ -69,6 +51,7 @@
                   </p>
                 <% end %>
               </li>
+              -->
 
               <li class="nav-item">
                 <%= link_to admin_admin_users_path, class:"nav-link" do %>
@@ -89,8 +72,13 @@
 <script>
 $(function () {
   var url = window.location;
+  //console.log(url);
   $('ul.nav-sidebar a').filter(function() {
         return this.href == url || url.href.indexOf(this.href) == 0;
   }).addClass('active');
+
+  $('ul.nav-sidebar a').filter(function() {
+        return this.href == url || url.href.indexOf(this.href) == 0;
+  }).parent().parent().parent().addClass('menu-open');
 });
 </script>

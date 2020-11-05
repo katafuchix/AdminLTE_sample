@@ -18,6 +18,12 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'index#index'
     get 'index' => 'index#index'
-    resources :admin_users, controller: :manage_roles #, only: [:index, :new, :create, :edit, :update, :destory] 
+    resources :admin_users, controller: :manage_roles
+
+    Master.master_routes.keys.each do |type|
+      resources type, controller: :masters, type: type.classify
+    end
+
   end
+
 end

@@ -1,0 +1,66 @@
+- provide(:title, @content_class.superclass.model_name.human)
+- provide(:subtitle, @content_class.model_name.human)
+- @paginate = @contents
+
+= content_for(:unorder_lits_links)
+  - @content_class.superclass.master_routes.each do |route_key, human_name|
+    li = link_to human_name, url_for(route_key)
+
+.pull-right
+  = link_to action: :new do
+    button.btn.btn-success = I18n.t('helpers.submit.add')
+
+- if @contents.present?
+  table.table
+    thead
+      tr
+        th = Master.human_attribute_name :name
+        th = Master.human_attribute_name :enabled
+        th = Master.human_attribute_name :sort_order
+        th 登録数
+        th 登録率
+        th
+        th
+    tbody
+      - @contents.each do |p|
+        tr
+          td
+            = p.name
+          td
+            = p.enabled ? '表示' : '非表示'
+          td
+            = p.sort_order
+          - if p.is_a?(Master::ViolationCategory)
+            td = "#人"
+            td = p.user_violations.count.zero? ? nil :"#{p.user_violations.count * 100 / UserViolation.count}%"
+          - elsif p.is_a?(Master::Prefecture)
+            - prof_address_count = UserProfile.where(prof_address_id: p.id).count
+            - prof_birth_place_count = UserProfile.where(prof_birth_place_id: p.id).count
+            td
+              dl.dl-horizontal
+                dt 居住地
+                dd
+                  p = "#{prof_address_count}人"
+                  p = prof_address_count.zero? ? nil : "#{prof_address_count * 100 / UserProfile.count}%"
+            td
+              dl.dl-horizontal
+                dt 出身地
+                dd
+                  p = "#{prof_birth_place_count}人"
+                  p = prof_birth_place_count.zero? ? nil : "#{prof_birth_place_count * 100 / UserProfile.count}%"
+          - elsif p.is_a?(Master::InquiryCategory)
+            td = p.inquiries.count.zero? ? nil : "#{p.inquiries.count}人"
+            td = p.inquiries.count.zero? ? nil : "#{p.inquiries.count * 100 / Inquiry.count}%"
+          - elsif p.is_a?(Master::LeavingReason)
+            - leaving_reasons_count = p.inquiry_leaving_reasons.count
+            td = "#{leaving_reasons_count}人"
+            td = leaving_reasons_count.zero? ? nil : "#{leaving_reasons_count * 100 / InquiryLeavingReason.count}"
+          - else
+            td = "#人"
+            td = "%"
+          td
+            = link_to action: :edit, id: p.id do
+              button.btn.btn-success = I18n.t('helpers.submit.update')
+          td
+            = link_to ({action: :destroy, id: p.id}), method: :delete, data: {confirm: "本当に削除しますか？"} do
+              button.btn.btn-danger = I18n.t('helpers.submit.destroy')
