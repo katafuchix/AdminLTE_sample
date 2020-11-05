@@ -34,7 +34,7 @@
                 <ul class="nav nav-treeview">
                   <% Master.master_routes.each do |key, value| %>
                     <li class="nav-item">
-                      <%= link_to key, class:"nav-link" do %>
+                      <%= link_to "/admin/" + key, class:"nav-link" do %>
                         <i class="far fa-circle nav-icon"></i>
                         <p><%= value %></p>
                       <% end %>
@@ -52,7 +52,14 @@
                 <% end %>
               </li>
               -->
-
+              <li class="nav-item">
+                <%= link_to edit_admin_app_configs_path, class:"nav-link" do %>
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    設定
+                  </p>
+                <% end %>
+              </li>
               <li class="nav-item">
                 <%= link_to admin_admin_users_path, class:"nav-link" do %>
                   <i class="nav-icon fas fa-th"></i>

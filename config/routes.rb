@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     get 'index' => 'index#index'
     resources :admin_users, controller: :manage_roles
 
+    resource :app_configs, only: %i(edit update)
+    
     Master.master_routes.keys.each do |type|
       resources type, controller: :masters, type: type.classify
     end
