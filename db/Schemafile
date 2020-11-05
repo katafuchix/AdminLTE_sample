@@ -692,3 +692,35 @@ create_table :articles, force: :cascade do |t|
   t.index [:user_id], using: :btree
   t.index [:deleted_at], using: :btree
 end
+
+create_table "app_configs" , force: :cascade do |t|
+  t.text "android_point_price_json_production"               , comment: " Androidポイント価格(本番環境)"
+  t.text "android_point_price_json_develop"                  , comment: " Androidポイント価格(開発環境)"
+  t.text "android_member_price_json_production"              , comment: " Android会員価格通常版(本番環境)"
+  t.text "android_member_price_json_develop"                 , comment: " Android会員価格通常版(開発環境)"
+  t.string "android_min_supported_app_version_on_develop"      , comment: " android サポートバージョン min"
+  t.string "android_min_supported_app_version_on_production"   , comment: " android サポートバージョン max"
+  t.integer "android_is_maintenance_on_develop", default: 0                , comment: " androidメンテナンス中フラグ開発版 （1：ON　0：OFF）"
+  t.integer "android_is_maintenance_on_production", default: 0             , comment: " androidメンテナンス中フラグ製品版 （1：ON　0：OFF）"
+  t.text "android_maintenance_message"                       , comment: " Androidメンテナンス中メッセージ"
+  t.integer "android_profile_image_register_first", default:0  , comment: " Android 初期プロフィール画像の登録位置"
+  t.text "ios_point_price_json_prodution"                    , comment: " iOSポイント価格 製品版"
+  t.text "ios_point_price_json_develop"                      , comment: " iOS ポイント価格 開発版"
+  t.text "ios_member_price_json_prodution"                   , comment: " iOS会員価格 製品版"
+  t.text "ios_member_price_json_develop"                     , comment: " iOS会員価格通常版 開発版"
+  t.integer "ios_force_update_prodution", default: 0                       , comment: " iOS強制アップデート 製品版 （1：ON　0：OFF）"
+  t.integer "ios_force_update_develop", default: 0                         , comment: " iOS強制アップデート開発版 （1：ON　0：OFF）"
+  t.string "ios_force_update_version_prodution"                , comment: " iOS強制アップデート 製品版 　このバージョンでなければアップデート"
+  t.string "ios_force_update_version_develop"                  , comment: " iOS強制アップデート開発版　このバージョンでなければアップデート"
+  t.integer "ios_is_maintenance_on_production", default: 0                 , comment: " iOSメンテナンス中フラグ 製品版（1：ON　0：OFF）"
+  t.integer "ios_is_maintenance_on_develop" , default: 0                   , comment: " iOSメンテナンス中フラグ開発版 （1：ON　0：OFF）"
+  t.text "ios_maintenance_message"                           , comment: " iOSメンテナンス中メッセージ"
+  t.text "ng_words"	                        , comment: " NGワードカンマ区切り"
+  t.integer "is_required_profile_point", default: 0	      , comment: " いいねポイント登録必須（1：ON　0：OFF）"
+  t.integer "is_required_profile_basic", default: 0	      , comment: " プロフィール登録基本項目必須（1：ON　0：OFF）	"
+  t.integer "is_required_profile_introduction", default: 0	, comment: " 自己紹介登録必須（1：ON　0：OFF）	"
+  t.integer "is_required_profile_tweet", default: 0	      , comment: " つぶやき登録必須（1：ON　0：OFF）	"
+  t.integer "is_required_profile_image", default: 0	      , comment: " プロフィール画像登録必須（1：ON　0：OFF）"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end

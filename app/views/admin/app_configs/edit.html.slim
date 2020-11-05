@@ -1,0 +1,102 @@
+= content_for :page_header, :config
+
+= form_for @config, url: admin_config_path, method: :put, html: { class: 'my-3' } do |f|
+  .form-group
+    hr
+    .form-group
+      h4 = t 'admin.config_items_android'
+    .form-group
+      = f.label :android_point_price_json_production
+      = f.text_area :android_point_price_json_production, class: 'form-control'
+    .form-group
+      = f.label :android_point_price_json_develop
+      = f.text_area :android_point_price_json_develop, class: 'form-control'
+    .form-group
+      = f.label :android_member_price_json_production
+      = f.text_area :android_member_price_json_production, class: 'form-control'
+    .form-group
+      = f.label :android_member_price_json_develop
+      = f.text_area :android_member_price_json_develop, class: 'form-control'
+    .form-group.row
+      = f.label :android_min_supported_app_version_on_production, class: 'col-sm-2 col-form-label'
+      .col-sm-10
+        .row.m-0
+          = f.text_field :android_min_supported_app_version_on_production, class: 'form-control col-sm-2'
+    .form-group.row
+      = f.label :android_min_supported_app_version_on_develop, class: 'col-sm-2 col-form-label'
+      .col-sm-10
+        .row.m-0
+          = f.text_field :android_min_supported_app_version_on_develop, class: 'form-control col-sm-2'
+    .form-group
+      = f.label :android_is_maintenance_on_production
+      = f.check_box :android_is_maintenance_on_production, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :android_is_maintenance_on_develop
+      = f.check_box :android_is_maintenance_on_develop, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :android_maintenance_message
+      = f.text_field :android_maintenance_message, class: 'form-control'
+    .form-group.row
+      = f.label :android_profile_image_register_first, class: 'col-sm-2 col-form-label'
+      .col-sm-10
+        .row.m-0
+          = f.text_field :android_profile_image_register_first, class: 'form-control col-sm-2'
+    hr
+    .form-group
+      h4 = t 'admin.config_items_ios'
+    .form-group
+      = f.label :ios_member_price_json_prodution
+      = f.text_area :ios_member_price_json_prodution, class: 'form-control'
+    .form-group
+      = f.label :ios_member_price_json_develop
+      = f.text_area :ios_member_price_json_develop, class: 'form-control'
+    .form-group
+      = f.label :ios_point_price_json_prodution
+      = f.text_area :ios_point_price_json_prodution, class: 'form-control'
+    .form-group
+      = f.label :ios_point_price_json_develop
+      = f.text_area :ios_point_price_json_develop, class: 'form-control'
+    .form-group
+      = f.label :ios_force_update_prodution, class: 'form-check-label'
+      = f.check_box :ios_force_update_prodution, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :ios_force_update_version_prodution
+      = f.text_field :ios_force_update_version_prodution, class: 'form-control col-sm-1'
+    .form-group
+      = f.label :ios_force_update_develop, class: 'form-check-label'
+      = f.check_box :ios_force_update_develop, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :ios_force_update_version_develop
+      = f.text_field :ios_force_update_version_develop, class: 'form-control col-sm-1'
+    .form-group
+      = f.label :ios_is_maintenance_on_production, class: 'form-check-label'
+      = f.check_box :ios_is_maintenance_on_production, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :ios_is_maintenance_on_develop, class: 'form-check-label'
+      = f.check_box :ios_is_maintenance_on_develop, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :ios_maintenance_message
+      = f.text_field :ios_maintenance_message, class: 'form-control'
+    hr
+    .form-group
+      h4 = t 'admin.config_items_common'
+    .form-group
+      = f.label :ng_words
+      = f.text_area :ng_words, class: 'form-control'
+    .form-group
+      = f.label :is_required_profile_point, class: 'form-check-label'
+      = f.check_box :is_required_profile_point, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :is_required_profile_basic, class: 'form-check-label'
+      = f.check_box :is_required_profile_basic, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :is_required_profile_introduction, class: 'form-check-label'
+      = f.check_box :is_required_profile_introduction, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :is_required_profile_tweet, class: 'form-check-label'
+      = f.check_box :is_required_profile_tweet, class: 'form-check-input ml-2'
+    .form-group
+      = f.label :is_required_profile_image, class: 'form-check-label'
+      = f.check_box :is_required_profile_image, class: 'form-check-input ml-2'
+    .offset-4.col-4
+      = f.submit t('admin.save'), class: 'btn btn-outline-primary btn-block'

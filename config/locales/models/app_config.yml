@@ -1,0 +1,34 @@
+ja:
+  activerecord:
+    models:
+      app_config: アプリ設定
+    attributes:
+      app_config:
+        android_config_title: Android 設定項目
+        android_point_price_json_production: android ポイント価格 製品版
+        android_point_price_json_develop:	android ポイント価格 開発版
+        android_member_price_json_production:	android 会員価格通常版 製品版
+        android_member_price_json_develop:	android 会員価格通常版 開発版
+        android_maintenance_message:	メンテナンス中メッセージ
+        android_min_supported_app_version_on_develop: supported ver. 開発版
+        android_min_supported_app_version_on_production: supported ver. 製品版
+        android_is_maintenance_on_develop: メンテナンス中 開発版
+        android_is_maintenance_on_production: メンテナンス中 製品版
+        android_profile_image_register_first: 初期プロフィール登録の画像登録の位置
+        ios_maintenance_message: メンテナンス中メッセージ
+        ios_is_maintenance_on_production: メンテナンス中 製品版
+        ios_is_maintenance_on_develop: メンテナンス中 開発版
+        ios_force_update_version_prodution:	強制アップデート 製品版 ＊このバージョンでなければアップデート
+        ios_force_update_version_develop:	強制アップデート 開発版　＊このバージョンでなければアップデート
+        ios_force_update_prodution:	強制アップデート 製品版
+        ios_force_update_develop:	強制アップデート開発版
+        ios_member_price_json_prodution:	iOS会員価格 製品版
+        ios_member_price_json_develop:	iOS会員価格通常版 開発版
+        ios_point_price_json_prodution:	iOSポイント価格 製品版
+        ios_point_price_json_develop:	iOS ポイント価格 開発版
+        ng_words:	NGワード　（カンマ区切り）
+        is_required_profile_point:	いいねポイント登録必須
+        is_required_profile_basic:	プロフィール登録基本項目必須
+        is_required_profile_introduction:	自己紹介登録必須
+        is_required_profile_tweet:	つぶやき登録必須
+        is_required_profile_image:	プロフィール画像登録必須
