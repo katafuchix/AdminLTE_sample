@@ -16,4 +16,5 @@ require('jquery')
 require("admin-lte")
 
 global.toastr = require("toastr")
+import 'bootstrap'
 import "../stylesheets/application"

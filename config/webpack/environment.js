@@ -7,6 +7,7 @@ environment.plugins.prepend('Provide',
     //jQuery: 'admin-lte/plugins/jquery/jquery',
     $: 'jquery/src/jquery',
     jQuery: 'jquery/src/jquery'
+    Popper: 'popper.js'
   })
 )
 
