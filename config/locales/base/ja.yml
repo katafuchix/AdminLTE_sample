@@ -142,8 +142,10 @@ ja:
     label:
       age: 歳
     submit:
+      new: 新規
       create: 登録
       submit: 保存
+      edit: 編集
       update: 更新
       destroy: 削除
       add: 追加

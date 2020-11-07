@@ -1,0 +1,69 @@
+<!-- Content Header (Page header) -->
+
+<%
+controller_name = controller.controller_name
+action = controller.action_name.to_sym
+model = Object.const_get(@content_class.to_s)
+%>
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark"><%=  model.model_name %> <%= model.human_attribute_name(action) %></h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"></li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- /.col-md-6 -->
+      <div class="col-lg-12">
+
+        <div class="card">
+          <!-- /.card-header -->
+
+          <section class="content">
+          <% action = @content.persisted? ? :update : :create %>
+          <%= form_with(model: @content, :url => {:action => action} , local: true) do |form| %>
+
+            <div class="card-body">
+              <div class="form-group col-sm-6">
+                <%= form.label model.human_attribute_name :name %><!-- <span class="badge badge-danger">必須</span> -->
+                <%= form.text_field :name, class:"form-control", placeholder:"名前を入力してください" %>
+              </div>
+
+              <div class="form-group col-sm-6">
+                <%= form.label model.human_attribute_name :enabled %><!-- <span class="badge badge-danger">必須</span> -->
+                <%= form.select :enabled, {:'表示' => true, :'非表示' => false}, {selected: @content.persisted? ? @content.enabled : ""}, {class: "custom-select" , required: true } %>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <%= form.submit @content.persisted? ? I18n.t('helpers.submit.update') : I18n.t('helpers.submit.create') , class:"btn btn-primary" %>
+              <%= link_to I18n.t('helpers.submit.back'), {action: :index},  class: "btn btn-default float-right" %>
+            </div>
+          <% end %>
+          </section>
+
+
+          <!-- /.card-body -->
+        </div>
+
+      </div>
+      <!-- /.col-md-6 -->
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
