@@ -8,11 +8,14 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   include Logic::User
 
+  include Discard::Model
+  default_scope -> { kept }
+
   enum search_status: %w(normal_order low_order)
   has_one :user_profile, class_name: 'UserProfile', dependent: :destroy
   has_one :user_age_certification, dependent: :destroy
 
-  soft_deletable column: :deleted_at
+  #soft_deletable column: :deleted_at
 
   attr_accessor :edit_type
 
