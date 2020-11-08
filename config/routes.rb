@@ -28,4 +28,7 @@ Rails.application.routes.draw do
 
   end
 
+  mount Versions::V1::Api => '/'
+  mount GrapeSwaggerRails::Engine => '/api/swagger'
+
 end
