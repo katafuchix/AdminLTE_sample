@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   has_many :incomming_pending_relation_users, through: :incomming_pending_relations, source: :user
 
   # "message": "Passing string to be evaluated in :if and :unless conditional options is not supported. Pass a symbol for an instance method, or a lambda, proc or block, instead."
-  after_create :create_user_age_certification, unless: proc { |user| user.user_age_certification.presence }
+  after_create :create_user_age_certification, unless: proc { |user| user.user_age_certification }
 
   has_one :user_income_certification, dependent: :destroy
   has_one :user_billing, dependent: :destroy

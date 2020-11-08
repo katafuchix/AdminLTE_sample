@@ -10,11 +10,8 @@ module Logic
         def create_by_request!(params)
           ActiveRecord::Base.transaction do
             user = ::User.new(create_user_params(params))
-            p "------13"
             user.save!
-            p "------14"
             user.build_user_profile(create_user_profile_params(params)).save!
-            p "------16"
             #user.build_user_profile().save!
             #user.send_sms(params[:unconfirmed_mobile_phone])
             user
