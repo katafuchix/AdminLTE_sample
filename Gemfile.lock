@@ -100,6 +100,8 @@ GEM
     declarative (0.0.20)
     declarative-option (0.1.0)
     deep_merge (1.2.1)
+    default_value_for (3.3.0)
+      activerecord (>= 3.2.0, < 6.1)
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -431,6 +433,7 @@ DEPENDENCIES
   carrierwave-base64
   carrierwave-magic
   config
+  default_value_for
   devise
   devise-i18n
   devise_token_auth

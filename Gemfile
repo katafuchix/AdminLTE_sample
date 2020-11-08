@@ -80,6 +80,7 @@ gem 'devise-i18n'
 gem 'ridgepole'
 gem 'seed-fu'
 gem "discard" # soft delete
+gem 'default_value_for'
 
 # Paging
 gem 'kaminari'

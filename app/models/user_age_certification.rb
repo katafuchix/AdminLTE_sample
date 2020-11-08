@@ -15,7 +15,7 @@ class UserAgeCertification < ApplicationRecord
   [:remove_document_image!, :remove_document_image_was_accepted!, :remove_document_image_was_rejected!, :remove_document_image_before!].each do |callback|
     skip_callback :commit, :after, callback
   end
-  #default_value_for :document_image_status, :blanked
+  default_value_for :document_image_status, :blanked
   scope :user_profile_name_containt, lambda { |name|
     joins(user: :user_profile).where("user_profiles.name LIKE '%#{name}%'")
   }

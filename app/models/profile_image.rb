@@ -15,7 +15,7 @@ class ProfileImage < ApplicationRecord
   with_options on: [:create, :update] do |profile_image|
     profile_image.validates :image, presence: true, image: { min_width: 200, min_height: 200, max_filesize_mb: 100 }
   end
-  #validates :image_rejected_reason, presence: true, if: "self.image_status == 'rejected'"
+  validates :image_rejected_reason, presence: true, if: proc { sself.image_status == 'rejected' }
   validates :image_role, inclusion: %w(show_public relation_user_only matching_user_only show_private), presence: true
 
   #after_commit do
