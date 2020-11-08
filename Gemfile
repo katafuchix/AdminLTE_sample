@@ -86,3 +86,6 @@ gem 'kaminari'
 
 # Search
 gem 'ransack'
+
+# Google Play Billing
+gem 'google-api-client', '0.17.3', require: ['google/apis/androidpublisher_v2']
