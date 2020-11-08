@@ -30,14 +30,15 @@ module Admin
     end
 
     def destroy
-      @content.destroy ? success_message(:deleted) : failure_message
+      @content.discard ? success_message(:deleted) : failure_message
     end
 
     private
 
     def success_message(i18n_key)
       flash[:success] = I18n.t(i18n_key, scope: 'prof_master.message')
-      redirect_to [:admin, @content]
+       #redirect_to [:admin, @content] # showに行ってしまう
+      redirect_to action: :index
     end
 
     def failure_message

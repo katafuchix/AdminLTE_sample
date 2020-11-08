@@ -79,6 +79,7 @@ gem 'devise-i18n'
 # DB
 gem 'ridgepole'
 gem 'seed-fu'
+gem "discard" # soft delete
 
 # Paging
 gem 'kaminari'

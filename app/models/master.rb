@@ -14,6 +14,8 @@
 
 class Master < ApplicationRecord
 	PREFIX = 'master_'.freeze
+	include Discard::Model
+	default_scope -> { kept }
   validates :name, presence: true, allow_blank: false
   validates :enabled, inclusion: [true, false]
   validates :sort_order, presence: true, numericality: true

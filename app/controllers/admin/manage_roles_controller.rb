@@ -29,7 +29,7 @@ module Admin
     end
 
     def destroy
-      @admin_user.destroy
+      @admin_user.discard #destroy
       flash[:success] = I18n.t('admin_user.message.deleted')
       redirect_to action: :index
     end
