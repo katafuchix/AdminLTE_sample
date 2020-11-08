@@ -3,7 +3,7 @@ class UserForm
   include ActiveModel::Model
   include ::UserFormValidation::Methods
 
-  attr_accessor :id, :email, :password, :authentication_token, :sex, :prof_address_id
+  attr_accessor :id, :email, :password, :authentication_token, :sex, :prof_address_id, :nickname
 
   validates :id, :password, presence: true
 
@@ -13,8 +13,9 @@ class UserForm
 
 	# 新規作成のとき
   with_options on: :users_create do |m|
-    m.validates :email, :password, :sex, presence: true
+    m.validates :email, :password, :sex, :nickname, presence: true
     m.validates :password, length: { minimum: 4 }, if: :password
+    m.validates :nickname, length: { minimum: 2 }, if: :nickname
     #m.validates :sex, inclusion: { in: UserProfile.sexes.keys }, allow_blank: true, if: :sex
   end
 

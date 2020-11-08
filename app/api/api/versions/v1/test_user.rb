@@ -45,6 +45,7 @@ module Versions
             params do
               requires :id, type: String, desc: 'id'
               requires :password, type: String, desc: 'パスード'
+              requires :nickname, type: String, desc: 'ニックネーム'
               requires :sex, type: Integer, desc: '性別'
             end
             post :create, jbuilder: 'v1/users/create' do
