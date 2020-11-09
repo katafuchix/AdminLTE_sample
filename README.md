@@ -25,6 +25,24 @@ Things you may want to cover:
 # AdminLTE_sample
 
 ```
+$ bundle init
+```
+
+Gemfile
+
+```
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+gem 'rails'
+```
+
+```
+$ bundle install --path vendor/bundle
+$ bundle exec rails new . --skip-action-mailer --skip-active-storage --skip-action-cable 
 $ bundle install --path vendor/bundle  
 $ yarn install --check-files
 $ bin/rails g devise:install 
