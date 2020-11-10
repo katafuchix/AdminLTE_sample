@@ -26,6 +26,18 @@ Rails.application.routes.draw do
       resources type, controller: :masters, type: type.classify
     end
 
+    resources :users, only: [:index, :show, :destroy, :update, :edit] do
+      member do
+        patch :update_profile
+        put :purchase_payingmember
+        put :purchase_point
+        put :add_relation_count
+        put :send_notification
+        put :restore_soft_destroy
+        put :toggle_search_status
+        delete :profile_image_destroy
+      end
+    end
   end
 
   mount Versions::V1::Api => '/'
