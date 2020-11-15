@@ -54,3 +54,8 @@ $ bin/rails db:seed_fu
 ```
 bundle exec ridgepole -c config/database.yml -E development --export -o db/Schemafile
 ```
+
+```
+$ yarn add admin-lte
+$ yarn add jquery
+```
