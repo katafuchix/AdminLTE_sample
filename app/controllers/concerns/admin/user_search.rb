@@ -33,6 +33,7 @@ module Admin
       users = Filter.sex_search(users, param)
       users = Filter.user_ids_search(users, param)
       users = Filter.name_search(users, param)
+      users = Filter.nickname_search(users, param)
       users = Filter.email_search(users, param)
       users = Filter.member_type_search(users, param)
       users = Filter.age_verified_search(users, param)
@@ -63,6 +64,11 @@ module Admin
       def name_search(users, param)
         return users unless param[:name].present?
         users.where('user_profiles.name like ?', %(%#{param[:name]}%))
+      end
+
+      def nickname_search(users, param)
+        return users unless param[:nickname].present?
+        users.where('users.nickname like ?', %(%#{param[:name]}%))
       end
 
       def email_search(users, param)

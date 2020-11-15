@@ -4,6 +4,7 @@ ja:
       user: 会員
     attributes:
       user:
+        id: ID
         email: メールアドレス
         password: パスワード
         mobile_phone: 携帯電話番号
@@ -11,3 +12,5 @@ ja:
         remain_relation_count: 残いいね!
         search_status: 検索表示ステータス
         login: メールアドレスまたは携帯電話番号
+        nickname: ニックネーム
+        sex: 性別

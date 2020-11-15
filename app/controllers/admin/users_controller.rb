@@ -14,16 +14,16 @@ module Admin
     # GET /users
     def index
       if params[:format] == 'csv'
-        @users = filtered_users(params).includes(user_profile: ::UserProfile.eager_loading_list)
+        @users = filtered_users(params)#.includes(user_profile: ::UserProfile.eager_loading_list)
                                        .order(params[:sorts] || 'users.last_sign_in_at desc')
                                        .page(params[:page]).per(index_paginates_per)
       else
-        @users = filtered_users(params).includes(:user_payments, :user_app_version_info, user_profile: ::UserProfile.eager_loading_list)
+        @users = filtered_users(params)#.includes(:user_payments, :user_app_version_info, user_profile: ::UserProfile.eager_loading_list)
                                        .order(params[:sorts] || 'users.last_sign_in_at desc')
                                        .page(params[:page]).per(index_paginates_per)
       end
-      @pater_points = ::User.sum_remain_point_with_user(@users.pluck(:id))
-      render :fb if params[:fb].present?
+      #@pater_points = ::User.sum_remain_point_with_user(@users.pluck(:id))
+      #render :fb if params[:fb].present?
     end
 
     # GET /users/1

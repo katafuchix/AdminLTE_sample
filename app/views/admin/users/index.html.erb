@@ -3,7 +3,7 @@
 <%
 controller_name = controller.controller_name
 action = controller.action_name.to_sym
-model = Object.const_get('Admin::User')
+model = Object.const_get('User')
 %>
 
 <div class="content-header">
@@ -27,6 +27,38 @@ model = Object.const_get('Admin::User')
   <div class="container-fluid">
     <div class="row">
 
+      <div class="col-lg-12">
+        <%=  search_form_for([:admin, @q], { class: 'form-horizontal usearch' }) do |form| %>
+        <div class="card">
+           <!--div class="card-header">
+             <h3 class="card-title"></h3>
+           </div -->
+           <div class="card-body">
+             <div class="row">
+               <div class="col-sm-6">
+                 <!-- text input -->
+                 <div class="form-group">
+                   <label>id</label>
+                   <%= search_field_tag 'user_id', params[:user_id],  placeholder: 'user_id 空白区切可能', class: 'form-control'  %>
+                 </div>
+               </div>
+               <div class="col-sm-6">
+                 <div class="form-group">
+                   <label>nickname</label>
+                   <%= search_field_tag 'nickname', params[:nickname], class: 'form-control'  %>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="card-footer">
+             <%= link_to('Reset',  {action: :index},  class: "btn btn-default float-left" ) %>
+             <button type="submit" class="btn btn-info float-right">Search</button>
+           </div>
+        </div>
+        <% end %>
+      </div>
+
+
       <!-- /.col-md-6 -->
       <div class="col-lg-12">
 
@@ -35,6 +67,7 @@ model = Object.const_get('Admin::User')
                 <h3 class="card-title">
                   <i class="ion ion-clipboard mr-1"></i>
                   <%= model.to_s %>
+                  <%= @users.count %>
                 </h3>
                 <%= link_to(I18n.t('helpers.submit.create'),  {action: :index},  class: "btn btn-info float-right" ) %>
           </div>
@@ -43,10 +76,10 @@ model = Object.const_get('Admin::User')
             <table id="users_example" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th></th>
-                  <th><%= model.human_attribute_name :name %></th>
+                  <th><%= model.human_attribute_name :id %></th>
+                  <th><%= model.human_attribute_name :nickname %></th>
                   <th><%= model.human_attribute_name :email %></th>
-                  <th><%= model.human_attribute_name :role %></th>
+                  <th><%= model.human_attribute_name :sex %></th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -56,9 +89,9 @@ model = Object.const_get('Admin::User')
                 <% @users.each do |user| %>
                   <tr>
                     <td><%= user.id %></td>
-                    <td><%= user.name %><%= user.user_profile.sex_i18n %></td>
-                    <td><%= user.email %></td>
                     <td><%= user.nickname %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.user_profile.sex_i18n %></td>
                     <td></td>
                     <td></td>
                   </tr>
