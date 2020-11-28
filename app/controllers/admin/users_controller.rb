@@ -32,7 +32,8 @@ module Admin
 
     # DELETE /users/1
     def destroy
-      @user.withdrawal!(params[:message])
+      #@user.withdrawal!(params[:message])
+      @user.discard
       @user.update(is_forced_withdrawal: true) if params[:is_forced_withdrawal] == 'true'
       redirect_back(fallback_location: admin_users_path)
     end

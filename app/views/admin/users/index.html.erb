@@ -94,8 +94,8 @@ model = Object.const_get('User')
                     <td><%= user.nickname %></td>
                     <td><%= user.email %></td>
                     <td><%= user.user_profile.sex_i18n %></td>
-                    <td></td>
-                    <td></td>
+                    <td><%= link_to '編集', edit_admin_user_path(user), class:"btn btn-outline-primary btn-sm" %></td>
+                    <td><%= link_to '削除', admin_user_path(user, :is_forced_withdrawal => true), method: :delete, class:"btn btn-outline-danger btn-sm", data: { confirm: '本当によろしいでしょうか？' } %></td>
                   </tr>
                 <% end %>
               </tbody>

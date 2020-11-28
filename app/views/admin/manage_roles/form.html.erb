@@ -78,6 +78,9 @@ model = Object.const_get('Admin::User')
             </div>
             <div class="card-footer">
               <%= form.submit @admin_user.persisted? ? I18n.t('helpers.submit.update') : I18n.t('helpers.submit.create') , class:"btn btn-primary" %>
+              <% if @admin_user.persisted? %>
+                <%= link_to '削除', admin_admin_user_path(@admin_user), method: :delete, class:"btn btn-danger", data: { confirm: '本当によろしいでしょうか？' } %></td>
+              <% end %>
               <%= link_to admin_admin_users_path, type: :button, class:"btn btn-default float-right" do %>
                 <%= I18n.t('helpers.submit.back') %>
               <% end %>

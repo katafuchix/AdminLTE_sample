@@ -144,6 +144,29 @@ create_table "users", options: nil, force: :cascade do |t|
   #t.datetime :deleted_at
   t.datetime "discarded_at"
 
+  t.integer  "relation_point",                                   default: 0,     null: false
+  t.integer  "incomming_visitors_count",                         default: 0,     null: false
+  t.integer  "outcomming_visitors_count",                        default: 0,     null: false
+  t.integer  "remain_relation_count",                            default: 0,     null: false
+  t.integer  "outcomming_pickups_count",                         default: 0,     null: false
+  t.integer  "incomming_pickups_count",                          default: 0,     null: false
+  t.boolean  "notification_sent",                                default: false, null: false
+  t.boolean  "is_private",                                       default: false, null: false
+  t.string   "unique_key",                                       default: "",    null: false
+  t.integer  "main_image_role",                                  default: 0,     null: false
+  t.integer  "search_status",                                    default: 0,     null: false
+  t.boolean  "complete_registration",                            default: true,  null: false
+  t.string   "customer_id"
+  t.boolean  "is_forced_withdrawal",                             default: false, null: false
+  t.integer  "within_month_incomming_relation_count",            default: 0,     null: false
+  t.datetime "overwrite_matching_last_updated_at"
+  t.string   "default_message"
+  t.string   "withdrawal_user_email"
+  t.string   "withdrawal_user_mobile_phone"
+  t.integer  "lock_version",                                     default: 0
+  t.string   "device_token_android"
+  t.integer  "within_week_incomming_relation_count",             default: 0,     null: false
+  
   t.index [:email],                unique: true
   t.index [:uid, :provider],     unique: true
   t.index [:reset_password_token], unique: true
