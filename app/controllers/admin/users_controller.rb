@@ -46,21 +46,25 @@ module Admin
     # GET /users/1/edit
     def edit
       @user_profile = UserProfile.find_by(user_id: params[:id])
+      render template: 'admin/users/form'
     end
 
     # PUT /users/1
     def update
       ActiveRecord::Base.transaction do
-        update_email = @user.email != adjust_update_params[:email]
-        @user.update!(adjust_update_params)
+        #update_email = @user.email != adjust_update_params[:email]
+        @user.update!(update_permit_params(true))
         # メール更新する場合はconfirm処理
-        ::User.confirm_by_token(@user.confirmation_token) if update_email
+        #::User.confirm_by_token(@user.confirmation_token) if update_email
         flash[:notice] = 'ユーザー情報を更新しました。'
         redirect_back(fallback_location: admin_users_path)
       end
     rescue => e
+      p 'e.message'
+      p e.message
       flash.now[:alert] = e.message
-      render :edit
+      #render :edit
+      render template: 'admin/users/form'
     end
 
     # PUT /users/1/update_profile
@@ -80,7 +84,8 @@ module Admin
       end
     rescue => e
       flash.now[:alert] = e.message
-      render :edit
+      #render :edit
+      render template: 'admin/users/form'
     end
 
     # PUT /users/1/restore_soft_destroy
@@ -158,8 +163,13 @@ module Admin
     end
 
     # Update StrongParameter
-    def update_permit_params
-      params.require(:user).permit(:email, :password, :mobile_phone)
+    def update_permit_params(is_update = false)
+      #params.require(:user).permit(:email, :password, :mobile_phone, :nickname, :password_confirmation)
+      if is_update && params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+        params.require(:user).permit(:nickname, :email)
+      else
+        params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
+      end
     end
 
     def update_profile_permit_params

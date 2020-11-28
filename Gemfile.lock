@@ -96,6 +96,9 @@ GEM
     config (2.2.1)
       deep_merge (~> 1.2, >= 1.2.1)
       dry-validation (~> 1.0, >= 1.0.0)
+    counter_culture (2.7.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
     crass (1.0.6)
     declarative (0.0.20)
     declarative-option (0.1.0)
@@ -433,6 +436,7 @@ DEPENDENCIES
   carrierwave-base64
   carrierwave-magic
   config
+  counter_culture
   default_value_for
   devise
   devise-i18n

@@ -1,0 +1,94 @@
+<!-- Content Header (Page header) -->
+
+<%
+controller_name = controller.controller_name
+action = controller.action_name.to_sym
+model = Object.const_get('User')
+%>
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark"><%=  model.model_name %> <%= model.human_attribute_name(action) %></h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Starter Page</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- /.col-md-6 -->
+      <div class="col-lg-12">
+
+        <div class="card">
+          <!-- /.card-header -->
+
+          <section class="content">
+          <% url_for_upsert = @user.persisted? ? admin_user_path : admin_users_path %>
+          <% action = @user.persisted? ? :update : :create %>
+          <%= form_with(model: @user, :url => {:action => action} , local: true) do |form| %>
+
+          <!-- <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <span>入力内容を確認してください</span>
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>  -->
+            <div class="card-body">
+              <div class="form-group col-sm-6">
+                <%= form.label model.human_attribute_name :nickname %><!-- <span class="badge badge-danger">必須</span> -->
+                <%= form.text_field :nickname, class:"form-control", placeholder:"名前を入力してください" %>
+              </div>
+
+              <div class="form-group col-sm-6">
+                <%= form.label model.human_attribute_name :email %><!-- <span class="badge badge-danger">必須</span> -->
+                <%= form.text_field :email, class:"form-control", placeholder:"メールアドレス" %>
+              </div>
+
+              <div class="form-group col-sm-6">
+                <%= form.label model.human_attribute_name :password %><!-- <span class="badge badge-danger">必須</span> -->
+                <%= form.password_field :password, class:"form-control" %>
+              </div>
+
+              <div class="form-group col-sm-6">
+                <%= form.label model.human_attribute_name :password_confirmation %><!-- <span class="badge badge-danger">必須</span> -->
+                <%= form.password_field :password_confirmation, class:"form-control"%>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <%= form.submit @user.persisted? ? I18n.t('helpers.submit.update') : I18n.t('helpers.submit.create') , class:"btn btn-primary" %>
+              <%= link_to admin_users_path, type: :button, class:"btn btn-default float-right" do %>
+                <%= I18n.t('helpers.submit.back') %>
+              <% end %>
+
+            </div>
+          <% end %>
+          </section>
+
+
+          <!-- /.card-body -->
+        </div>
+
+      </div>
+      <!-- /.col-md-6 -->
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->

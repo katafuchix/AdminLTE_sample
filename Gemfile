@@ -81,6 +81,7 @@ gem 'ridgepole'
 gem 'seed-fu'
 gem "discard" # soft delete
 gem 'default_value_for'
+gem 'counter_culture'
 
 # Paging
 gem 'kaminari'
