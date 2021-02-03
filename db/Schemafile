@@ -166,7 +166,7 @@ create_table "users", options: nil, force: :cascade do |t|
   t.integer  "lock_version",                                     default: 0
   t.string   "device_token_android"
   t.integer  "within_week_incomming_relation_count",             default: 0,     null: false
-  
+
   t.index [:email],                unique: true
   t.index [:uid, :provider],     unique: true
   t.index [:reset_password_token], unique: true
@@ -719,9 +719,11 @@ create_table :articles, force: :cascade do |t|
   t.integer  :reply_article_id
   t.datetime :created_at,                                               null: false
   t.datetime :updated_at,                                               null: false
-  t.datetime :deleted_at
+  #t.datetime :deleted_at
+  t.datetime "discarded_at"
   t.index [:user_id], using: :btree
-  t.index [:deleted_at], using: :btree
+  #t.index [:deleted_at], using: :btree
+  t.index [:discarded_at], using: :btree
 end
 
 create_table "app_configs" , force: :cascade do |t|
