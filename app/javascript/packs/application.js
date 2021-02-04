@@ -18,3 +18,5 @@ require("admin-lte")
 global.toastr = require("toastr")
 import 'bootstrap'
 import "../stylesheets/application"
+
+import "@fortawesome/fontawesome-free/js/all";
